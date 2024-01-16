@@ -6,4 +6,10 @@ Second: Write down SohCahToa values.
 
 Third: Take derivative of value you will be using to susbtite as dθ.
 
-Fourth: Subsitute the values into the original function..
+Fourth: Subsitute the values into the original function.
+
+Fifth: Simplify the new function using trigonometric properties.
+
+Sixth: Take the integral of the simplified function.
+
+Seventh: Substitute back in terms of x.
