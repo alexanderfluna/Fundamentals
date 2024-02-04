@@ -1,5 +1,0 @@
-Proof By Induction:
-
-1. Base case
-
-2. Prove it works for n + 1

@@ -1,9 +1,0 @@
-Integral(uv') = uv - integral(u'v)
-
-1. Regular integration by parts.
-
-2. Integration by parts where v' = 1. Use this for taking the integral of ln(x).
-
-3. If the function has e^x, sin(x), or cos(x) and a polynomial, use the table method. This is where you keep doing integration by parts until the derivative of the polynomial reaches 0.
-
-4. If the function has e^x, sin(x), or cos(x) together, do integration by parts twice until you get the origninal integrand you are solving for. Then add the integrand to both sides to get the answer.

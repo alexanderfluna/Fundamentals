@@ -1,8 +1,0 @@
-A geometric series is of the form:
-
-...
-
-The sum converges to:
-  a 
-______
-1 - r

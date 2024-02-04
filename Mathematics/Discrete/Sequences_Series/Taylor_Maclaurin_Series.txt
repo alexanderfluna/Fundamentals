@@ -1,3 +1,0 @@
-Power series that can be used to represent a complex function such as ln(x), sin(x), e^x
-
-Infinite polynomial.
