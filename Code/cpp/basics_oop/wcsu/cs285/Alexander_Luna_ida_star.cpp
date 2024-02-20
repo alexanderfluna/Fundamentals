@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <limits>
+#include <chrono>
 using namespace std;
 
 // A node is composed of a(n)
@@ -12,7 +13,7 @@ using namespace std;
         is a combination of two other heuristic functions g(n) and h(n).
         Simply it is f(n) = g(n) + h(n). */
 //   pointer to its parent node
-//   vector of pointers to its children nodes (algo not limited to bst)
+//   vector of pointers to its children nodes (algo not limited to binary tree)
 struct Node {
     int f_score; // already computed for us in this problem
     Node* parent;
@@ -21,14 +22,16 @@ struct Node {
 };
 
 // Function declarations
+void printTree(Node* node, int depth = 0);
 void ida_star(Node* start, Node* goal);
 Node* ida_star_pruning(Node* start, Node* goal, int threshold);
 void printPath(Node* node);
-void printTree(Node* node, int depth = 0);
 
 int main() {
-    // First we load the tree with the nodes
+    // Tracks program's execution time
+    auto beginning = chrono::steady_clock::now();
 
+    // First we load the tree with the nodes
     // Row 1: 
     // 2
     Node* start = new Node(2, nullptr);
@@ -98,6 +101,10 @@ int main() {
     // Call ida_star algorithm with start node and goal node
     ida_star(start, goal);
 
+    // Store the time difference between beginning and end
+    auto end = chrono::steady_clock::now();
+    auto diff = end - beginning;
+    cout << "Time: "<< chrono::duration <double, milli>(diff).count() << " ms" << endl;
     return 0;
 }
 
