@@ -2,44 +2,44 @@
 // Demonstrating Class Regex.
 
 using System;
-using System.Windows.Forms;
 using System.Text.RegularExpressions;
 
 namespace RegexMatches
 {
-   /// <summary>
-   /// test out regular expressions
-   /// </summary>
-   class RegexMatches
-   {
-      /// <summary>
-      /// The main entry point for the application.
-      /// </summary>
-      [STAThread]
-      static void Main(string[] args)
-      {
-         string output = "";
+    /// <summary>
+    /// test out regular expressions
+    /// </summary>
+    class RegexMatches
+    {
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main(string[] args)
+        {
+            string output = "";
 
-         // create regular expression
-         Regex expression = 
-            new Regex( @"J.*\d[0-35-9]-\d\d-\d\d" );
+            // create regular expression conisting of a:
+            // J, 0 or more characters, digit, digit excluding 4, -, digit, digit, -, digit, digit
+            Regex expression =
+               new Regex(@"J.*\d[0-35-9]-\d\d-\d\d");
 
-         string string1 = "Jane's Birthday is 05-12-75\n" +
-            "Dave's Birthday is 11-04-68\n" +
-            "John's Birthday is 04-28-73\n" +
-            "Joe's Birthday is 12-17-77";
+            // Will only match with Jane & Joe
+            string string1 = "Jane's Birthday is 05-12-75\n" +
+               "Dave's Birthday is 11-04-68\n" +
+               "John's Birthday is 04-28-73\n" +
+               "Joe's Birthday is 12-17-77";
 
-         // match regualr expresison to string and
-         // print out all matches
-         foreach ( Match myMatch in expression.Matches( string1 ) )
-            output += myMatch.ToString() + "\n";
+            // match regualr expresison to string and
+            // print out all matches
+            foreach (Match myMatch in expression.Matches(string1))
+                output += myMatch.ToString() + "\n";
 
-         MessageBox.Show( output, "Using class Regex",
-            MessageBoxButtons.OK, MessageBoxIcon.Information );
+            Console.WriteLine(output);
 
-      } // end method Main
+        } // end method Main
 
-   } // end class RegexMatches
+    } // end class RegexMatches
 }
 
 /*
