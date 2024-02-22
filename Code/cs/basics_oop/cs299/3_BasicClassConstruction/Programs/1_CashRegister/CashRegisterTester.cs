@@ -9,12 +9,15 @@ namespace TestingProject
 	{
 		public static void Main()
 		{
+			// Create new register object
 			CashRegister register = new CashRegister();
-			register.RecordPurchase(29.50);
-			register.RecordPurchase(9.25);
-			register.EnterPayment(50);
-			double change = register.GiveChange();
-			Console.WriteLine(change);      
+
+			// Call register methods
+			register.RecordPurchase(29.50); // record $29.50 purchase
+			register.RecordPurchase(10.25); // record $10.25 purchase
+			register.EnterPayment(50); // pay with $50
+			double change = register.GiveChange(); // return the change
+			Console.WriteLine(change); // print the change amount
 		}
 	}
 }
