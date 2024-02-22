@@ -6,43 +6,49 @@ using System.Windows.Forms;
 
 namespace UsingConstAndReadonly
 {
-   // Constants class definition
-   public class Constants : Object
-   {
-      // create constant PI 
-      public const double PI = 3.14159;
+    // Constants class definition
+    public class Constants : Object
+    {
+        // create constant PI 
+        public const double PI = 3.14159;
 
-      // radius is a constant
-      // that is uninitialized
-      public readonly int radius;
+        // radius is a constant
+        // that is uninitialized
+        public readonly int radius;
 
-      public Constants( int radiusValue )
-      {
-         radius = radiusValue;
-      }
+        public Constants(int radiusValue)
+        {
+            radius = radiusValue;
+        }
 
-   } // end class Constants
+    } // end class Constants
 
-   // UsingConstAndReadOnly class definition
-   public class UsingConstAndReadonly
-   {
-      // method Main creates Constants 
-      // object and displays its values
-      static void Main( string[] args )
-      {		   
-         Random random = new Random();
+    // UsingConstAndReadOnly class definition
+    public class UsingConstAndReadonly
+    {
+        // method Main creates Constants 
+        // object and displays its values
+        static void Main(string[] args)
+        {
+            // Create new random object
+            Random random = new Random();
 
-         Constants constantValues = 
-            new Constants( random.Next( 1, 20 ) );
+            // Create new constants object passing to 
+            // the constructor a random number from 1-20
+            // that gets stored as the radius
+            Constants constantValues =
+               new Constants(random.Next(1, 20));
 
-         MessageBox.Show( "Radius = " + constantValues.radius + 
-            "\nCircumference = " +  
-            2 * Constants.PI * constantValues.radius,
-            "Circumference" );
+            // Create message box containing the radius and
+            // PI * radius = circumference
+            MessageBox.Show("Radius = " + constantValues.radius +
+               "\nCircumference = " +
+               2 * Constants.PI * constantValues.radius,
+               "Circumference");
 
-      } // end method Main
+        } // end method Main
 
-   } // end class UsingConstAndReadOnly
+    } // end class UsingConstAndReadOnly
 }
 
 /*
