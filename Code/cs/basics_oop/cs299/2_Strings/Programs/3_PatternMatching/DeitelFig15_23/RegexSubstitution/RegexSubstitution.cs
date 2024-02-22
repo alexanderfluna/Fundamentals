@@ -7,60 +7,76 @@ using System.Text.RegularExpressions;
 
 namespace RegexSubstitution
 {
-   /// <summary>
-   /// performs regex substitution with Replace and Split
-   /// </summary>
-   class RegexSubstitution
-   {
-      /// <summary>
-      /// The main entry point for the application.
-      /// </summary>
-      [STAThread]
-      static void Main( string[] args )
-      {
-         string testString1 = 
-            "This sentence ends in 5 stars *****";
+    /// <summary>
+    /// performs regex substitution with Replace and Split
+    /// </summary>
+    class RegexSubstitution
+    {
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main(string[] args)
+        {
+            // Test string 1
+            string testString1 =
+               "This sentence ends in 5 stars *****";
 
-         string testString2 = "1, 2, 3, 4, 5, 6, 7, 8";
-         Regex testRegex1 = new Regex( "stars" );
-         Regex testRegex2 = new Regex( @"\d" );
-         string[] results;
-         string output = "Original String 1\t\t\t" + testString1;
+            // Add test string 1 to output
+            string output = "Original String 1\t\t\t" + testString1;
 
-         testString1 = Regex.Replace( testString1, @"\*", "^" );
+            // Test string 2
+            string testString2 = "1, 2, 3, 4, 5, 6, 7, 8";
 
-         output += "\n^ substituted for *\t\t\t" + testString1;
+            // Test regex 1
+            // "stars"
+            Regex testRegex1 = new Regex("stars");
 
-         testString1 = testRegex1.Replace( testString1, "carets" );
+            // Test regex 2
+            // digit
+            Regex testRegex2 = new Regex(@"\d");          
 
-         output += "\n\"carets\" substituted for \"stars\"\t\t" +
-            testString1;
+            // Replace * with ^ in test string 1
+            testString1 = Regex.Replace(testString1, @"\*", "^");
+            output += "\n^ substituted for *\t\t\t" + testString1;
 
-         output += "\nEvery word replaced by \"word\"\t" +
-            Regex.Replace( testString1, @"\w+", "word" );
+            // Replace "stars" from testRegex1 with "carets" in test string 1
+            testString1 = testRegex1.Replace(testString1, "carets");
+            output += "\n\"carets\" substituted for \"stars\"\t\t" +
+               testString1;
 
-         output += "\n\nOriginal String 2\t\t\t" + testString2;
+            // Replace every word in test string 1 with "word"
+            output += "\nEvery word replaced by \"word\"\t" +
+               Regex.Replace(testString1, @"\w+", "word");
 
-         output += "\nFirst 3 digits by \"digit\" \t\t" +
-            testRegex2.Replace( testString2, "digit", 3 );
+            // Print test string 2
+            output += "\n\nOriginal String 2\t\t\t" + testString2;
 
-         output += "\nString split at commas\t\t[";
+            // Replace first 3 digits from text regex 2 with "digit" in test string 2
+            output += "\nFirst 3 digits by \"digit\" \t\t" +
+               testRegex2.Replace(testString2, "digit", 3);
 
-         results = Regex.Split( testString2, @",\s*" );
+            // Replace all 
+            output += "\nString split at commas\t\t[";
 
-         foreach ( string resultString in results )
-         {
-            output += "\"" + resultString + "\", ";
-         }
+            // Array of strings
+            string[] results;
 
-         output = output.Substring( 0, output.Length - 2 ) + "]";
+            // Store the result in the array of strings results
+            // Split strings in test string 2 that are separated by a , and whiteline
+            results = Regex.Split(testString2, @",\s*");
+            foreach (string resultString in results)
+            {
+                output += "\"" + resultString + "\", "; // print it out from results
+            }
+            output = output.Substring(0, output.Length - 2) + "]";
 
-         MessageBox.Show( output, 
-            "Substitution using regular expressions" );
+            MessageBox.Show(output,
+               "Substitution using regular expressions");
 
-      } // end method Main
+        } // end method Main
 
-   } // end class RegexSubstitution
+    } // end class RegexSubstitution
 }
 
 /*
