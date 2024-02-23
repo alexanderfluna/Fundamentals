@@ -1,0 +1,8 @@
+Point3 constructor: Center = [72, 29]; Radius = 0
+Circle5 constructor: Center = [72, 29]; Radius = 4.5
+Point3 constructor: Center = [5, 5]; Radius = 0
+Circle5 constructor: Center = [5, 5]; Radius = 10
+Circle5 Destructor: Center = [5, 5]; Radius = 10
+Point3 Destructor: Center = [5, 5]; Radius = 10
+Circle5 Destructor: Center = [72, 29]; Radius = 4.5
+Point3 Destructor: Center = [72, 29]; Radius = 4.5
