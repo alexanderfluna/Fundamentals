@@ -22,7 +22,7 @@ namespace Assignment1
             // Keep reading from the console until the user types CTRL+Z and Enter
             while ((phrase = Console.ReadLine()) != null)
             {
-                string result = EncodeToPigLatin(phrase); // encopde the phrase to Pig Latin
+                string result = EncodeToPigLatin(phrase); // encode the phrase to Pig Latin
                 Console.WriteLine($"The phrase encoded into Pig Latin is: {result}"); // print the encoded phrase
             }
         }
