@@ -1,9 +1,13 @@
 ﻿using System;
 
+
+// namespace
 namespace StaticMethods {
 
+    // class
     public class MathUtilities {
 
+        // class constructor
         static MathUtilities() {
             randomValue = new Random();
             // Warm-up random number generator
@@ -15,6 +19,8 @@ namespace StaticMethods {
         // Fields
         private static Random randomValue;
 
+        // Input: decimal number x
+        // Input: decimal number precision
         public static decimal SquareRoot(decimal x, decimal precision) {
             decimal y = x;
             while (Math.Abs(y * y - x) > precision) {
@@ -23,6 +29,7 @@ namespace StaticMethods {
             return y;
         }
 
+        // Input: int NumberPoints
         public static double ApproximatePI(int NumberPoints) {
             int hits = 0;
             double x, y;
