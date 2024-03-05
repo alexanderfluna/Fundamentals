@@ -36,12 +36,12 @@ namespace ConstructorsAndDestructor
       // property X
       public int X
       {
-         get
+         get // getter 
          {
             return x;
          }
 
-         set
+         set // setter
          {
             x = value; // no need for validation
          }
@@ -51,12 +51,12 @@ namespace ConstructorsAndDestructor
       // property Y 
       public int Y
       {
-         get
+         get // getter
          {
             return y;
          }
 
-         set
+         set // setter
          {
             y = value; // no need for validation
          }
