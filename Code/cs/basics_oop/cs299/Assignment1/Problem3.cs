@@ -20,8 +20,8 @@ namespace Assignment1
             while ((input = Console.ReadLine()) != null)
             {
                 string reversed = Reverse(input); // reverse the string
-                Console.WriteLine($"Reversed string: {reversed}\n"); // print the reversed string
-                Console.WriteLine("Enter a string: (type CTRL+Z and Enter to finish):");
+                Console.WriteLine($"\nReversed string: {reversed}"); // print the reversed string
+                Console.WriteLine("\nEnter a string: (type CTRL+Z and Enter to finish):");
             }
         }
 
