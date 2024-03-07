@@ -30,6 +30,7 @@ namespace Assignment1
                 Console.WriteLine($"a. Number of words: {wordCount}");
                 Console.WriteLine($"b. Number of numeric literals: {numericLiteralCount}");
                 Console.WriteLine($"c. Number of brace and parentheses pairs: {braceParenthesesCount}");
+                Console.WriteLine("\nEnter C/C++ code (type Ctrl+Z and Enter to finish):");
             }
         }
 
