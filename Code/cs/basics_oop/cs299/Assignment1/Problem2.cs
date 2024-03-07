@@ -24,6 +24,7 @@ namespace Assignment1
             {
                 string result = EncodeToPigLatin(phrase); // encode the phrase to Pig Latin
                 Console.WriteLine($"The phrase encoded into Pig Latin is: {result}"); // print the encoded phrase
+                Console.WriteLine("\nEnter an English phrase (type Ctrl+Z and Enter to finish):");
             }
         }
 
