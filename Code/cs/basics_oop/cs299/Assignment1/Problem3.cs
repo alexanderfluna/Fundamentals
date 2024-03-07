@@ -7,18 +7,20 @@ namespace Assignment1
     {
         static void Main(string[] args)
         {
+            // Print out the purpose of the program
             Console.WriteLine("This program will read a string from the keyboard " +
                 "and reverse the string by \nsplitting it into two parts at position " +
                 "n/2, reversing the left part, reversing \nthe right part and " +
                 "combining the two reversed parts in reversed order.\n\n" +
                 "Enter a string (type CTRL+Z and Enter to finish): ");
 
-            string input;
+            string input; // store the user's input string
 
+            // Keep reading from the console until the user types CTRL+Z and Enter
             while ((input = Console.ReadLine()) != null)
             {
-                string reversed = Reverse(input);
-                Console.WriteLine($"Reversed string: {reversed}\n");
+                string reversed = Reverse(input); // reverse the string
+                Console.WriteLine($"Reversed string: {reversed}\n"); // print the reversed string
                 Console.WriteLine("Enter a string: (type CTRL+Z and Enter to finish):");
             }
         }
