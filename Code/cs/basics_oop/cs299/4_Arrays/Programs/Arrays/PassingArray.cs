@@ -20,7 +20,11 @@ namespace PassingArray
             t = temperature;
 
             t[1] = 44;
-            Console.WriteLine(temperature[1]);
+
+            foreach (int temp in t)
+            {
+                Console.WriteLine(temp);
+            }
 			
         }
         public static void InputValues(int [ ] temp)
