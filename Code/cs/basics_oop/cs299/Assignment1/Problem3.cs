@@ -25,6 +25,8 @@ namespace Assignment1
             }
         }
 
+        // Input: string str - string to be reversed
+        // Output: string - the reversed string
         static string Reverse(string str)
         {
             // Base case: If the string has length 0 or 1, return the string itself
