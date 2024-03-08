@@ -8,41 +8,59 @@ namespace ConsoleApplication1
 
     class TheClass
     {
-        public int x;
+        private int x;
+
+        public int X
+        {
+            get
+            {
+                return x;
+            }
+            set
+            {
+                this.x = value;
+            }
+        }
     }
 
     struct TheStruct
     {
-        public int x;
+        private int x;
+
+        public int X
+        {
+            get
+            {
+                return x;
+            }
+            set
+            {
+                this.x = value;
+            }
+        }
     }
 
     class TestClass
     {
         public static void structtaker(TheStruct s)
         {
-            s.x = 5;
+            s.X = 5; // does not change because it is a copy
+                    // if you add ref then it will change it
         }
         public static void classtaker(TheClass c)
         {
-            c.x = 5;
+            c.X = 5;
         }
         public static void Main()
         {
             TheStruct a = new TheStruct();
             TheClass b = new TheClass();
-            a.x = 1;
-            b.x = 1;
+            a.X = 1;
+            b.X = 1;
             structtaker(a);
             classtaker(b);
-            Console.WriteLine("a.x = {0}", a.x);
-            Console.WriteLine("b.x = {0}", b.x);
+            Console.WriteLine("a.x = {0}", a.X);
+            Console.WriteLine("b.x = {0}", b.X);
         }
     }
-
-
-
-    
-    
-    
-    
 }
