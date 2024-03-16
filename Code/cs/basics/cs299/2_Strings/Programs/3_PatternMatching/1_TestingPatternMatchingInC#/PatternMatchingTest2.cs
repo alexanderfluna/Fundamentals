@@ -1,76 +1,74 @@
 using System;
 using System.Text.RegularExpressions;
 
-namespace RegexpTest
-{  
-
-    class Program
+namespace Test
+{
+    public class Solution
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Match m;
-            
-            string text = "ABRACADABRA1abracadabra2abracadabra3";
-            string pat = @"abra";
-            Regex r = new Regex(pat, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-            m = r.Match(text);
-            Console.WriteLine("Match=" + m.ToString());
-            
-            // Substitutions
-            text = "***Hello World***";
-            //$2 refers to the match for the second parenthesized expression
-            string s = Regex.Replace(text, @"(\w+) (\w+)", "$2");
-            Console.WriteLine(s);
+            // Replace all digits in the string with 1
+            string input = "I am 23 years old.";
+            input = Regex.Replace(input, @"\d", "1");
+            Console.WriteLine("Input1: " + input);
 
-            // remove the beginning and ending spaces
-            s = Regex.Replace("  abra  ", @"^\s*(.*)\s*$", "$1");
-            Console.WriteLine(s);
+            // Replace all spaces with questions marks
+            input = Regex.Replace(input, @"\s", "?");
+            Console.WriteLine("Input2: " + input);
 
-            //$` refers to the part of the string before the match
-            text = "---hello***";
-            s = Regex.Replace(text, @"(\b\w+\b)", "$`");
-            Console.WriteLine(s);
+            // Ignore the case of the pattern
+            input = "ABRACADABRA1abracadabra2abracadabra3";
+            string pattern = @"abra";
+            Regex r = new Regex(pattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+            Match m = r.Match(input);
+            if (m.Success)
+            {
+                Console.WriteLine("Input3: " + m.Value);
+            }
 
-            //$' refers to the part of the string after the match
-            text = "---hello***";
-            s = Regex.Replace(text, @"(\b\w+\b)", "$'");
-            Console.WriteLine(s);
+            // $2 refers to the match for the second parentheseized expression
+            input = "***Hello There World***";
+            string s = Regex.Replace(input, @"(\w+) (\w+) (\w+)", "$2");
+            Console.WriteLine("Input4: " + s);
 
-            text = "---hello***";
-            s = Regex.Replace(text, @"(\b\w+\b)", "  $'  ");
-            Console.WriteLine(s);
+            // Remove all spaces from start and end of the string
+            s = Regex.Replace("  abra ", @"^\s*(.*)\s*", "$1");
+            Console.WriteLine("Input5: " + s);
 
-            text = "***hello***";
-            s = Regex.Replace(text, @"(\b\w+\b)", "  $&  ");
-            Console.WriteLine(s);
+            // Replace the word in the middle with what came before it
+            input = "---hello***";
+            s = Regex.Replace(input, @"(\b\w+\b)", "$`");
+            Console.WriteLine("Input6: " + s);
 
-            
-            // Refering to the matches within the pattern
-            // \1 refers to the match of the first parenthesized expression
-            // find a repeated word character sequence
-            text = "This is Hello Hello World Eexample";
-            m = Regex.Match(text, @"(\w+)\s\1");
-            if (!m.Success)
-                Console.WriteLine("No match");
-            else
-                Console.WriteLine("|" + m + "|");
+            // Replace the word in the middle with what comes after it
+            s = Regex.Replace(input, @"(\b\w+\b)", "$'");
+            Console.WriteLine("Input7: " + s);
 
-            // find all repeated word character sequences            
+            // Replace the word in the middle with what comes after it
+            // and adds spaces before and after the middle
+            s = Regex.Replace(input, @"(\b\w+\b)", "  $'  ");
+            Console.WriteLine("Input8: " + s);
+
+            // Only add spaces before and after the middle
+            s = Regex.Replace(input, @"(\b\w+\b)", "  $&  ");
+            Console.WriteLine("Input9: " + s);
+
+            // Matches first repeated character sequence
+            input = "This is Hello Hello Hello World Example";
+            m = Regex.Match(input, @"(\w+)\s\1");
+            if (m.Success)
+                Console.WriteLine("Input10: " + m.Value);
+
+            // Matches all repeated character sequences
             Regex ex = new Regex(@"(\w+)\s\1");
-            foreach (Match match in ex.Matches(text))
+            Console.WriteLine("\nInput11: ");
+            foreach (Match match in ex.Matches(input))
                 Console.WriteLine(match);
-           
-            // find a repeated whole word
-            text = "This is Hello Hello World Example";
-            m = Regex.Match(text, @"(\b\w+\b)\s+\1");
-            if (!m.Success)
-                Console.WriteLine("No match");
-            else
-                Console.WriteLine("|" + m + "|");
 
-
+            // Matches the first repeated whole word
+            m = Regex.Match(input, @"(\b\w+\b)\s+\1");
+            if (m.Success)
+                Console.WriteLine("\nInput12: " + m.Value);
         }
     }
-
-
 }
