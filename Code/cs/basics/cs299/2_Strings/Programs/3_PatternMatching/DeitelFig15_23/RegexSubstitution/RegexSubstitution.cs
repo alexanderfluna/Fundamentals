@@ -1,5 +1,6 @@
 // Fig. 15.23: RegexSubstitution.cs
 // Using Regex method Replace.
+// References -> Add Reference -> System.Windows.Forms
 
 using System;
 using System.Windows.Forms;
@@ -34,7 +35,7 @@ namespace RegexSubstitution
 
             // Test regex 2
             // digit
-            Regex testRegex2 = new Regex(@"\d");          
+            Regex testRegex2 = new Regex(@"\d");
 
             // Replace * with ^ in test string 1
             testString1 = Regex.Replace(testString1, @"\*", "^");
