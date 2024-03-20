@@ -1,39 +1,33 @@
-using System;
+namespace NamespaceApp
+{
+    public class App
+    {
+        public void Talk()
+        {
+            System.Console.WriteLine("App in NamespaceApp");
+        }
 
+        static void Main(string[] args)
+        {
+            // NamespaceApp
+            App appObject = new App();
+            appObject.Talk();
 
-namespace NamespaceApplication {
+            // Namespace1
+            Namespace1.Class1 class1 = new Namespace1.Class1();
+            class1.Talk();
 
-    public class MyClass {
-		
+            // Namespace2
+            Namespace2.Class2 class2 = new Namespace2.Class2();
+            class2.Talk();
 
-		public void Talk() {
-			System.Console.WriteLine("In MyClass in NamespaceApplication");
-			System.Console.WriteLine("Press any key to continue");
-			System.Console.ReadLine();
-		}
+            // Namespace3
+            Namespace3.Class3 class3 = new Namespace3.Class3();
+            class3.Talk();
 
-
-		
-		static void Main(string[] args) {
-			MyClass appObject = new MyClass();
-			appObject.Talk();
-
-			Namespace2.MyClass object1 = new Namespace2.MyClass();
-			object1.Talk();
-			
-			Namespace1.AnotherClass object2 = new Namespace1.AnotherClass();
-			object2.Talk();
-
-			Namespace3.MyClass object3 = 
- 					new Namespace3.MyClass();
-			object3.Talk();
-
-			Namespace3.Namespace4.MyClass object4 = 
-  					new Namespace3.Namespace4.MyClass();
-			object4.Talk();
-		}
-	}
+            // Namespace.Namespace4
+            Namespace3.Namespace4.Class4 class4 = new Namespace3.Namespace4.Class4();
+            class4.Talk();
+        }
+    }
 }
-
-
-
