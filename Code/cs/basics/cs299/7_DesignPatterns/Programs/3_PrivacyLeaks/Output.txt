@@ -1,0 +1,2 @@
+Person: Hanne 24.12.1826
+Age of Hanne as of 27.9.2006: 180.

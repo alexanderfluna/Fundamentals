@@ -1,0 +1,9 @@
+Temperature watcher w1: the temperature is now 23.
+Temperature watcher w2: the temperature is now 23.
+Rain watcher w3: Accumulated rain fall: 5.
+Temperature watcher w1: the temperature is now 24.
+Temperature watcher w2: the temperature is now 24.
+Rain watcher w3: Accumulated rain fall: 5.
+Temperature watcher w1: the temperature is now 21.
+Temperature watcher w2: the temperature is now 21.
+Rain watcher w3: Accumulated rain fall: 5,9.

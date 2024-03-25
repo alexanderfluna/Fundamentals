@@ -1,0 +1,10 @@
+Die[6]: 1
+Die[6]: 1
+Die[6]: 4
+Die[6]: 5
+Die[6]: 2
+Die[6]: 5
+Die[6]: 5
+Die[6]: 2
+Die[6]: 3
+d2 and d3 refer to same die instance
