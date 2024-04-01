@@ -1,4 +1,3 @@
-// Alexander Luna | Assignment 2 | Problem 1
 using System;
 using System.Collections.Generic;
 using System.Text;
