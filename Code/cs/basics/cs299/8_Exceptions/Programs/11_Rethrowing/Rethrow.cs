@@ -8,19 +8,19 @@ class ExceptionDemo{
   public static void Main(){
     Console.WriteLine("Main");
     int[] table = new int[6]{10,11,12,13,14,15};
-    int idx = 6;
-    M(table, idx);
+    int index = 6;
+    M(table, index);
   }
 
-  public static void M(int[] table, int idx){
-    Console.WriteLine("M(table,{0})", idx);
-    N(table,idx);
+  public static void M(int[] table, int index){
+    Console.WriteLine("M(table,{0})", index);
+    N(table,index);
   }
 
-  public static void N(int[] table, int idx){
-    Console.WriteLine("N(table,{0})", idx);
+  public static void N(int[] table, int index){
+    Console.WriteLine("N(table,{0})", index);
     try{
-      P(table,idx);
+      P(table,index);
     }
     catch (IndexOutOfRangeException e){
       // Will not/cannot handle exception here. 
@@ -29,9 +29,9 @@ class ExceptionDemo{
     }
   }
 
-  public static void P(int[] table, int idx){
-    Console.WriteLine("P(table,{0})", idx);
+  public static void P(int[] table, int index){
+    Console.WriteLine("P(table,{0})", index);
     Console.WriteLine("Accessing element {0}: {1}", 
-                       idx, table[idx]);
+                       index, table[index]);
   }
 }
