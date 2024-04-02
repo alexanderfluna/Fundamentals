@@ -1,18 +1,15 @@
-// Alexander Luna
-
+// Alexander Luna | Assignment 2 | Problem3
 using System;
 
 namespace TestingProject
 {
 	/// <summary>
-	/// Describes any class whose objects can measure other objects.
+	/// Describes any class whos can measure objects.
 	/// </summary>
 	public interface Measurable
 	{
 		///   Computes the measure of an object.
-		///   @param anObject the object to be measured
 		///   @return the measure
-		double GetMeasure(Object anObject);
+		double GetMeasure();
 	}
 }
-

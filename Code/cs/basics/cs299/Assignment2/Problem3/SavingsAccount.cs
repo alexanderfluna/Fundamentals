@@ -21,21 +21,24 @@ namespace TestingProject
 			Deposit(interest); 
 		}
 
-        public void Reserve(double amount)
-        {
-            throw new NotImplementedException();
-        }
+		public void Reserve(double amount)
+		{
+			AssertNonNegative(amount);
+			reservedAmount += amount;
+		}
 
-        public void Release(double amount)
-        {
-            throw new NotImplementedException();
-        }
+		public void Release(double amount)
+		{
+			AssertNonNegative(amount);
+			reservedAmount -= amount;
+		}
 
-        public double GetMeasure(object anObject)
-        {
-            throw new NotImplementedException();
-        }
+		public double GetMeasure()
+		{
+			return GetBalance() - reservedAmount;
+		}
 
-        private double interestRate;
+		private double interestRate;
+		private double reservedAmount;
 	}
 }

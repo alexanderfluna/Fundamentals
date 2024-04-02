@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Diagnostics;
 
 namespace TestingProject
 {
@@ -32,8 +33,10 @@ namespace TestingProject
 	    ///  Withdraws money from the bank account.
 		///  @param amount the amount to withdraw
 		public virtual void Withdraw(double amount) 
-		{  
-			balance = balance - amount;
+		{  if (balance - amount < 0)
+				Console.WriteLine("\tERROR: There is not enough money to withdraw");
+			else
+				balance = balance - amount;
 		}
 
 		 /// Gets the current balance of the bank account.
@@ -54,6 +57,11 @@ namespace TestingProject
 
 		/// Introduce an abstract method EndofMonth with no implementation. 
 		public abstract void EndOfMonth();
+
+		protected void AssertNonNegative(double amount)
+		{
+			Debug.Assert(amount >= 0, "Amount should be non-negative.");
+		}
 
 		private double balance; 
 	}
