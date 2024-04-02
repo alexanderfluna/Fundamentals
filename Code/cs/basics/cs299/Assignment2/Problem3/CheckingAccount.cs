@@ -14,10 +14,6 @@ namespace TestingProject
 		///@param initialBalance the initial balance
 		public CheckingAccount(double initialBalance): base(initialBalance)	
 		{  
-			// Construct superclass
-			// super(initialBalance); //cannot explicitly call the superclass 
-			                          //constructor in C# !!
-	      	
 			// Initialize transaction count
 			transactionCount = 0;
 			
@@ -51,23 +47,25 @@ namespace TestingProject
 		}
 
 		
-
 		public void Reserve(double amount)
         {
-            throw new NotImplementedException();
-        }
+			AssertNonNegative(amount);
+			reservedAmount += amount;
+		}
 
         public void Release(double amount)
         {
-            throw new NotImplementedException();
-        }
+			AssertNonNegative(amount);
+			reservedAmount -= amount;
+		}
 
-        public double GetMeasure(object anObject)
+        public double GetMeasure()
         {
-            throw new NotImplementedException();
-        }
+			return GetBalance() - reservedAmount;
+		}
 
         private int transactionCount;
+		private double reservedAmount;
 
 		private const int FREE_TRANSACTIONS = 3;
 		private const double TRANSACTION_FEE = 2.0;
