@@ -5,10 +5,14 @@ namespace C_SharpConsoleProject
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            // Create an array of Die objects
-            Die[] dice = new Die[5];
+            // Print the purpose of the program
+            Console.WriteLine("This program will make an array of dice and sort them " +
+                "using the static System.Array.Sort method\n");
+
+            // Create an array of 6 Die objects
+            Die[] dice = new Die[6];
             for (int i = 0; i < dice.Length; i++)
             {
                 dice[i] = new Die();
