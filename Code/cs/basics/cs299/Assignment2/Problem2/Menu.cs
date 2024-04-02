@@ -6,7 +6,7 @@ namespace Menu
     class Program
     {
 
-        // Delegate used to point to Square, Cube, or FourthPower
+        // Delegate used to point to Square, Cube, or FourthPower function
         delegate double PowerDelegate(double num);
 
         static void Main()
