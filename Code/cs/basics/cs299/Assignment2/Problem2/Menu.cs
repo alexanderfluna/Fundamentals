@@ -6,7 +6,7 @@ namespace Menu
     class Program
     {
 
-        // Delegate used to point to Square, Cube, or FourthPower function
+        // Delegate used to point to Square, Cube, or FourthPower
         delegate double PowerDelegate(double num);
 
         static void Main()
@@ -57,20 +57,23 @@ namespace Menu
         }
 
         // When a valid option is selected, the second function will ask for a number in the range 0 to 100
-        // 
+        // It will calculate (using a delegate argument) and display the appropriate answer and will keep  
+        // repeating the same option until 0 is entered. After 0 is entered re-display the menu.
         static void ProcessOption(string option, PowerDelegate powerFunction)
         {
             double num; // store the user's input
             do
             {
+                // Ask the user to input a number in the range 0-100
+                Console.Write($"\nEnter a number (0 to 100) to calculate the {option} (enter 0 to go back to the menu): ");
 
-                Console.WriteLine();
-                Console.Write($"Enter a number (0 to 100) to calculate the {option} (enter 0 to go back to the menu): ");
+                // Verify the input is a number
                 if (!double.TryParse(Console.ReadLine(), out num))
                 {
                     Console.WriteLine("Invalid input. Please enter a valid number.");
                 }
 
+                // Verify the number is in the range 0-100
                 if (num < 0 || num > 100)
                 {
                     Console.WriteLine("Number must be in the range 0 to 100.");
