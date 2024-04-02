@@ -3,6 +3,7 @@ using System;
 
 namespace C_SharpConsoleProject
 {
+    // Class Die implements the interface IComparable
     public class Die : IComparable<Die>
     {
         private int numberOfEyes;
