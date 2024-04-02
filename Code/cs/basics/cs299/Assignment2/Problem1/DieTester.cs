@@ -5,10 +5,10 @@ namespace C_SharpConsoleProject
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            // Create an array of Die objects
-            Die[] dice = new Die[5];
+            // Create an array of 6 Die objects
+            Die[] dice = new Die[6];
             for (int i = 0; i < dice.Length; i++)
             {
                 dice[i] = new Die();
