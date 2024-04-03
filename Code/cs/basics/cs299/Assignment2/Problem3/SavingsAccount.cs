@@ -5,8 +5,8 @@ namespace TestingProject
 {
 	/// <summary>
 	/// An account that earns interest at a fixed rate.
-	/// </summary>
 	/// Make all subclasses of BankAccount implement the Reservable interface
+	/// </summary>
 	public class SavingsAccount: BankAccount, Reservable
 	{
 		/// Constructs a savings account with a given balance and a given interest rate
@@ -22,7 +22,7 @@ namespace TestingProject
 		/// Constructs a savings account with a given balance, given interest rate, and given reserved amount
 		/// @param initialBalance the initial balance
 		/// @param interestRate the interest rate
-		/// 
+		/// @param reservedAmount the reserved amount
 		public SavingsAccount(double initialBalance, double interestRate, double reservedAmount) : base(initialBalance)	{  
 			// Initialize fields
 			this.interestRate = interestRate;
@@ -39,6 +39,7 @@ namespace TestingProject
 
 		/// Ensures that after the call, GetMeasure() will return a measure as least 
 		/// as large as the argument of Reserve() (reserved amount) until Release() is called
+		/// @param amount the amount to be reserved
 		public void Reserve(double amount)
 		{
 			// Verify the amount is non-negative
@@ -54,6 +55,7 @@ namespace TestingProject
 		}
 
 		/// Release() will reduce the reserved amount with the value of its argument
+		/// @param amount the amount to be released
 		public void Release(double amount)
 		{
 			// Verify the amount is non-negative
@@ -68,13 +70,14 @@ namespace TestingProject
 			reservedAmount -= amount;
 		}
 
-		/// Returns the account's balance
+		/// Calls the base method GetBalance()
+		/// @return the savings account's balance
 		public double GetMeasure()
 		{
 			return GetBalance();
 		}
 
-		private double interestRate;
+		private readonly double interestRate;
 		private double reservedAmount;
 	}
 }

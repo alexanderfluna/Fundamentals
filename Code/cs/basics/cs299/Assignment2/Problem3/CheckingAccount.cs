@@ -6,8 +6,8 @@ namespace TestingProject
 {
 	/// <summary>
 	/// A checking account that charges transaction fees.
-	///</summary>
 	/// Make all subclasses of BankAccount implement the Reservable interface
+	///</summary>
 	public class CheckingAccount: BankAccount, Reservable
 	{
 		/// Constructs a checking account with a given balance
@@ -21,7 +21,7 @@ namespace TestingProject
  
 		/// Constructs a checking account with a given balance and reserved amount
 		/// @param initialBalance the initial balance
-		/// @param reservedAmoun the reserved amount
+		/// @param reservedAmount the reserved amount
 		public CheckingAccount(double initialBalance, double reservedAmount): base(initialBalance)	
 		{
 			// Initialize fields
@@ -66,6 +66,7 @@ namespace TestingProject
 
 		/// Ensures that after the call, GetMeasure() will return a measure as least 
 		/// as large as the argument of Reserve() (reserved amount) until Release() is called
+		/// @param amount the amount to be reserved
 		public void Reserve(double amount)
 		{
 			// Verify the amount is non-negative
@@ -81,6 +82,7 @@ namespace TestingProject
 		}
 
 		/// Release() will reduce the reserved amount with the value of its argument
+		/// /// @param amount the amount to be released
 		public void Release(double amount)
 		{
 			// Verify the amount is non-negative
@@ -95,7 +97,8 @@ namespace TestingProject
 			reservedAmount -= amount;
 		}
 
-		/// Returns the account's balance
+		/// Calls the base method GetBalance()
+		/// @return the account's balance
 		public double GetMeasure()
 		{
 			return GetBalance();
@@ -106,5 +109,4 @@ namespace TestingProject
 		private const int FREE_TRANSACTIONS = 3;
 		private const double TRANSACTION_FEE = 2.0;
 	}
-
 }

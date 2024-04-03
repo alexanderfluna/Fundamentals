@@ -48,69 +48,48 @@ namespace TestingProject
                     // Perform 6 to 10 random transactions
                     for (int i = 0; i < random.Next(6, 11); i++)
                     {
-                        double amount = random.Next(1, 101); // random amount between 1 and 100
-                        int operation = random.Next(4); // randomly select operation: 0 for deposit, 1 for withdraw, 2 for reserve, 3 for release
-                        switch (operation)
+                        try
                         {
-                            case 0:
-                                try
-                                {
+                            double amount = random.Next(1, 101); // random amount between 1 and 100
+                            int operation = random.Next(4);      // randomly select operation: 0 for deposit, 1 for withdraw, 2 for reserve, 3 for release
+
+                            switch (operation)
+                            {
+                                case 0: // Deposit
                                     account.Deposit(amount);
                                     Console.WriteLine($"\tTransaction {i + 1}: Deposited {amount:c}. Current balance after deposit: {account.GetBalance():c}");
-                                }
-                                catch (Exception ex)
-                                {
-                                    Console.WriteLine(ex.Message);
-
-                                }
-                                break;
-                            case 1:
-                                try
-                                {
+                                    break;
+                                case 1: // Withdraw
                                     account.Withdraw(amount);
                                     Console.WriteLine($"\tTransaction {i + 1}: Withdrawn {amount:c}. Current balance after withdrawal: {account.GetBalance():c}");
-                                }
-                                catch (Exception ex)
-                                {
-                                    Console.WriteLine(ex.Message);
-                                }
-                                break;
-                            case 2:
-                                if (account is Reservable reservableAccount)
-                                {
-                                    try
+                                    break;
+                                case 2: // Reserve
+                                    if (account is Reservable reservableAccount) // cast account to Reservable
                                     {
                                         reservableAccount.Reserve(amount);
                                         Console.WriteLine($"\tTransaction {i + 1}: Reserved {amount:c}. Current balance after reservation: {account.GetBalance():c}");
                                     }
-                                    catch (Exception ex)
-                                    {
-                                        Console.WriteLine(ex.Message);
-                                    } 
-                                }
-                                break;
-                            case 3:
-                                if (account is Reservable aReservableAccount)
-                                {
-                                    try
+                                    break;
+                                case 3: // Release
+                                    if (account is Reservable aReservableAccount) // cast account to Reservable
                                     {
                                         aReservableAccount.Release(amount);
                                         Console.WriteLine($"\tTransaction {i + 1}: Released {amount:c}. Current balance after release: {account.GetBalance():c}");
                                     }
-                                    catch (Exception ex)
-                                    {
-                                        Console.WriteLine(ex.Message);
-                                    }
-                                }
-                                break;
+                                    break;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
                         }
                     }
+
+                    // Call EndofMonth and print the balance of this account once again
                     try
                     {
-                        // Call EndofMonth method and print the balance
                         account.EndofMonth();
-                        Console.WriteLine($"\tBalance at the end of the month: {account.GetBalance():c}\n");
-
+                        Console.WriteLine($"\tBalance at the end of the month: {account.GetBalance():c}");
                     }
                     catch (Exception ex)
                     {

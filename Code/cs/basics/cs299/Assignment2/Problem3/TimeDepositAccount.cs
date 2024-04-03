@@ -4,14 +4,14 @@ using System;
 namespace TestingProject
 {
     /// <summary>
-	/// The time deposit account is like a savings account, but you promise to
+    /// The time deposit account is like a savings account, but you promise to
     /// leave the money in the account for a particular number of months, and
     /// there is a penalty for early withdrawal.
-	/// </summary>
     /// Make all subclasses of BankAccount implement the Reservable interface
+    /// </summary>
     public class TimeDepositAccount : BankAccount, Reservable
     {
-        /// Constructs a time deposit account
+        /// Constructs a time deposit account with an initial balance, interest rate, and months to maturity
 		/// @param initialBalance the initial balance
 		/// @param interestRate the interest rate
         /// @param monthsToMaturity the months to maturity
@@ -23,7 +23,7 @@ namespace TestingProject
             this.reservedAmount = 0;
         }
 
-        /// Constructs a time deposit account
+        /// Constructs a time deposit account with an initial balance, interest rate, months to maturity, and reserved amount
 		/// @param initialBalance the initial balance
 		/// @param interestRate the interest rate
         /// @param monthsToMaturity the months to maturity
@@ -54,6 +54,8 @@ namespace TestingProject
             }
         }
 
+        /// Adds the earned interest to the account balance
+        /// Decrement the count of months
         public override void EndofMonth()
         {
             // If there are remaining months to maturity
@@ -67,6 +69,7 @@ namespace TestingProject
 
         /// Ensures that after the call, GetMeasure() will return a measure as least 
 		/// as large as the argument of Reserve() (reserved amount) until Release() is called
+        /// @param amount the amount to be reserved
 		public void Reserve(double amount)
         {
             // Verify the amount is non-negative
@@ -96,14 +99,15 @@ namespace TestingProject
             reservedAmount -= amount;
         }
 
-        /// Returns the account's balance
+        /// Calls the base method GetBalance()
+        /// @return the account's balance
         public double GetMeasure()
         {
             return GetBalance();
         }
 
         private int monthsToMaturity;
-        private double interestRate;
+        private readonly double interestRate;
         private const double PENALTY_RATE = 0.1; // 10% penalty rate for early withdrawal
         private double reservedAmount;
     }
