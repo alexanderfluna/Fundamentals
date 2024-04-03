@@ -41,17 +41,17 @@ namespace C_SharpConsoleProject
 
         // IComparable CompareTo method
         // Input: Die object
-        // Output: Less than zero if the current instance precedes the object
-        //          Zero if the current instance is in the same position as the object
-        //          Greater than zero if the current instance follows the object
+        // Output: - Less than zero if the current instance precedes the object
+        //         - Zero if the current instance is in the same position as the object
+        //         - Greater than zero if the current instance follows the object
         public int CompareTo(Die other)
         {
             // Return 1 if the Die object is null
             if (other == null)
                 return 1;
 
-            // Else compare the number of eyes of the current instance to
-            // the number of eyes of the Die object
+            // Else compare the number of eyes of the current instance 
+            // to the number of eyes of the Die object
             return this.numberOfEyes.CompareTo(other.numberOfEyes);
         }
     }

@@ -22,11 +22,12 @@ namespace C_SharpConsoleProject
             Array.Sort(dice);
 
             // Print the sorted array
-            Console.WriteLine("Sorted Dice:");
+            Console.Write("Sorted Dice: ");
             foreach (Die die in dice)
             {
-                Console.WriteLine(die);
+                Console.Write(die + " ");
             }
+            Console.WriteLine();
         }
     }
 }

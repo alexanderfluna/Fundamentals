@@ -1,3 +1,4 @@
+// Alexander Luna | Assignment 2 | Problem 3
 using System;
 using System.Collections;
 using System.Diagnostics;
@@ -26,17 +27,27 @@ namespace TestingProject
 		///   Deposits money into the bank account.
 		///  @param amount the amount to deposit
 		public virtual void Deposit(double amount) 
-		{  
-			balance = balance + amount;
+		{
+			// Verify the amount is non-negative
+			if (amount < 0)
+				throw new ArgumentException("\tTRANSACTION FAILED: Amount must be non-negative");
+
+			balance += amount;
 		}
 
 	    ///  Withdraws money from the bank account.
 		///  @param amount the amount to withdraw
 		public virtual void Withdraw(double amount) 
-		{  if (balance - amount < 0)
-				Console.WriteLine("\tERROR: There is not enough money to withdraw");
-			else
-				balance = balance - amount;
+		{
+			// Verify the amount is non-negative
+			if (amount < 0)
+				throw new ArgumentException("\tTRANSACTION FAILED: Amount must be non-negative");
+
+			// Verify there is enough balance in the account to withdraw
+			if (balance - amount < 0)
+				throw new ArgumentException("\tTRANSACTION FAILED: Attempted to withdraw more money than is available.");
+
+			balance -= amount;
 		}
 
 		 /// Gets the current balance of the bank account.
@@ -55,13 +66,8 @@ namespace TestingProject
 			other.Deposit(amount);
 		}
 
-		/// Introduce an abstract method EndofMonth with no implementation. 
-		public abstract void EndOfMonth();
-
-		protected void AssertNonNegative(double amount)
-		{
-			Debug.Assert(amount >= 0, "Amount should be non-negative.");
-		}
+		/// Introduce an abstract method EndofMonth with no implementation
+		public abstract void EndofMonth();
 
 		private double balance; 
 	}

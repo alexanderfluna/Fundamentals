@@ -4,11 +4,11 @@ using System;
 namespace TestingProject
 {
 	/// <summary>
-	/// Describes any class whos can measure objects.
+	/// Describes any class whos can return its measure
 	/// </summary>
 	public interface Measurable
 	{
-		///   Computes the measure of an object.
+		///   Computes the measure
 		///   @return the measure
 		double GetMeasure();
 	}
