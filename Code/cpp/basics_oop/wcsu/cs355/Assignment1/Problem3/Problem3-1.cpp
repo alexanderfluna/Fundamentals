@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cmath>
 using namespace std;
 
 enum Shape {
@@ -41,7 +40,7 @@ int main() {
     printArea(Shape::Rectangle, 4, 6);  // Length and Width
 
     // Case 4: Error handling for invalid enumeration value
-    if (shape == Shape::Rectangle) 
+    if (shape == Shape::Rectangle)
         cout << "The shape is a rectangle." << endl;
     else
         cout << "The shape is not a rectangle." << endl;
@@ -52,30 +51,30 @@ int main() {
         cout << "The shapes are the same." << endl;
     else
         cout << "The shapes are not the same." << endl;
-    
+
     // Case 6: Incrementing the enumeration value
     shape = static_cast<Shape>(static_cast<int>(shape) + 1);
 
     // Case 7: Enumerations in arrays
     Shape shapes[] = { Shape::Circle, Shape::Triangle, Shape::Square, Shape::Rectangle };
-    
+
     // Case 8: Using enumeration types in loops
     for (int i = 0; i < 4; i++) {
         switch (shapes[i]) {
-            case Shape::Circle:
-                cout << "Circle" << endl;
-                break;
-            case Shape::Triangle:
-                cout << "Triangle" << endl;
-                break;
-            case Shape::Square:
-                cout << "Square" << endl;
-                break;
-            case Shape::Rectangle:
-                cout << "Rectangle" << endl;
-                break;
-            default:
-                cout << "Unknown shape." << endl;
+        case Shape::Circle:
+            cout << "Circle" << endl;
+            break;
+        case Shape::Triangle:
+            cout << "Triangle" << endl;
+            break;
+        case Shape::Square:
+            cout << "Square" << endl;
+            break;
+        case Shape::Rectangle:
+            cout << "Rectangle" << endl;
+            break;
+        default:
+            cout << "Unknown shape." << endl;
         }
     }
 
@@ -95,6 +94,9 @@ int main() {
 
     Permission userPermissions = static_cast<Permission>(static_cast<int>(Permission::Read) | static_cast<int>(Permission::Write));
 
+    if (static_cast<int>(userPermissions) & static_cast<int>(Permission::Read))
+        cout << "User has read permission." << endl;
+
     if (static_cast<int>(userPermissions) & static_cast<int>(Permission::Write))
         cout << "User has write permission." << endl;
 
@@ -105,23 +107,23 @@ int main() {
 void printArea(Shape shape, double dimension1, double dimension2) {
     double area = 0;
     switch (shape) {
-        case Shape::Circle:
-            area = PI * pow(dimension1, 2);
-            cout << "Area of the circle is: " << area << endl;
-            break;
-        case Shape::Triangle:
-            area = 0.5 * dimension1 * dimension2;
-            cout << "Area of the triangle is: " << area << endl;
-            break;
-        case Shape::Square:
-            area = pow(dimension1, 2);
-            cout << "Area of the square is: " << area << endl;
-            break;
-        case Shape::Rectangle:
-            area = dimension1 * dimension2;
-            cout << "Area of the rectangle is: " << area << endl;
-            break;
-        default:
-            cout << "Unknown shape." << endl;
+    case Shape::Circle:
+        area = PI * pow(dimension1, 2);
+        cout << "Area of the circle is: " << area << endl;
+        break;
+    case Shape::Triangle:
+        area = 0.5 * dimension1 * dimension2;
+        cout << "Area of the triangle is: " << area << endl;
+        break;
+    case Shape::Square:
+        area = pow(dimension1, 2);
+        cout << "Area of the square is: " << area << endl;
+        break;
+    case Shape::Rectangle:
+        area = dimension1 * dimension2;
+        cout << "Area of the rectangle is: " << area << endl;
+        break;
+    default:
+        cout << "Unknown shape." << endl;
     }
 }
