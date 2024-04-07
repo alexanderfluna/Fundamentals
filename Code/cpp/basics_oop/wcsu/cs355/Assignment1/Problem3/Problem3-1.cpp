@@ -103,7 +103,7 @@ int main() {
     return 0;
 }
 
-// Function to calculate and print the area of the shape
+// Case 3: Using enumeration type as function parameter
 void printArea(Shape shape, double dimension1, double dimension2) {
     double area = 0;
     switch (shape) {

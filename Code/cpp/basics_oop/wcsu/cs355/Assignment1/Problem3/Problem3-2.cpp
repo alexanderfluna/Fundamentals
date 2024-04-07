@@ -101,7 +101,7 @@ int main(array<System::String^>^ args) {
     return 0;
 }
 
-// Function to print the day of the week
+// Case 4: Using enumeration type as function parameter
 void printDay(Day day) {
     switch (day) {
     case Day::Sunday:

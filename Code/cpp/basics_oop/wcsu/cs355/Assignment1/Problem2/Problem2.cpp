@@ -1,51 +1,49 @@
+// Alexander Luna / Assignment 2 / Problem2.cpp
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
-
 using namespace std;
 
 const int SIZE = 100;
-const int NUM_MULTIPLICATIONS = 10000;
+const int iterations = 1000000;
 
-// Function to initialize a matrix with random values
-void initializeMatrix(int matrix[][SIZE]) {
-    for (int i = 0; i < SIZE; ++i) {
-        for (int j = 0; j < SIZE; ++j) {
+// Function to initialize a static or stack matrix with random values
+void initialize_matrix(int matrix[][SIZE]) {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) 
             matrix[i][j] = rand() % 100; // Random number between 0 and 99
-        }
     }
 }
 
 // Function to initialize a heap matrix with random values
-void initializeHeapMatrix(int** matrix) {
-    for (int i = 0; i < SIZE; ++i) {
-        for (int j = 0; j < SIZE; ++j) {
+void initialize_matrix(int** matrix) {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) 
             matrix[i][j] = rand() % 100; // Random number between 0 and 99
-        }
     }
 }
 
-// Function to perform matrix multiplication for static and stack matrices
-void multiplyMatrix(int matrix1[][SIZE], int matrix2[][SIZE], int result[][SIZE]) {
-    for (int i = 0; i < SIZE; ++i) {
-        for (int j = 0; j < SIZE; ++j) {
-            result[i][j] = 0;
-            for (int k = 0; k < SIZE; ++k) {
-                result[i][j] += matrix1[i][k] * matrix2[k][j];
-            }
-        }
+// Function to perform matrix multiplication with static and stack matrices
+void matrix_times_matrix(int matrix1[][SIZE], int matrix2[][SIZE]) {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++)
+            matrix1[i][j] * matrix2[i][j];
     }
 }
 
-// Function to perform matrix multiplication for heap-allocated arrays
-void multiplyHeapMatrix(int** matrix1, int** matrix2, int** result) {
-    for (int i = 0; i < SIZE; ++i) {
-        for (int j = 0; j < SIZE; ++j) {
-            result[i][j] = 0;
-            for (int k = 0; k < SIZE; ++k) {
-                result[i][j] += matrix1[i][k] * matrix2[k][j];
-            }
-        }
+// Function to perform matrix multiplication with static or stack matrices and heap matrices
+void matrix_times_matrix(int matrix1[][SIZE], int** matrix2) {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++)
+            matrix1[i][j] * matrix2[i][j];
+    }
+}
+
+// Function to perform matrix multiplication with heap matrices
+void matrix_times_matrix(int** matrix1, int** matrix2) {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++)
+            matrix1[i][j] * matrix2[i][j];
     }
 }
 
@@ -55,51 +53,62 @@ int main() {
     // Allocate memory for matrices
     static int staticMatrix[SIZE][SIZE];
     int stackMatrix[SIZE][SIZE];
-    int** heapMatrix1 = new int* [SIZE];
-    int** heapMatrix2 = new int* [SIZE];
-    for (int i = 0; i < SIZE; ++i) {
-        heapMatrix1[i] = new int[SIZE];
-        heapMatrix2[i] = new int[SIZE];
-    }
+    int** heapMatrix = new int* [SIZE];
+    for (int i = 0; i < SIZE; i++) 
+        heapMatrix[i] = new int[SIZE];
 
     // Initialize matrices
     srand(time(nullptr)); // Seed for random numbers
-    initializeMatrix(staticMatrix);
-    initializeMatrix(stackMatrix);
-    initializeHeapMatrix(heapMatrix1);
-    initializeHeapMatrix(heapMatrix2);
+    initialize_matrix(staticMatrix);
+    initialize_matrix(stackMatrix);
+    initialize_matrix(heapMatrix);
 
-    // Measure time for static matrix multiplication
+    // Case 1: staticMatrix * staticMatrix
     start = clock();
-    for (int i = 0; i < NUM_MULTIPLICATIONS; ++i) {
-        multiplyMatrix(staticMatrix, staticMatrix, staticMatrix);
-    }
+    for (int i = 0; i < iterations; i++)
+        matrix_times_matrix(staticMatrix, staticMatrix);
     end = clock();
-    cout << "Time for static matrix multiplication: " << (double)(end - start) / CLOCKS_PER_SEC << " seconds" << endl;
+    cout << "Case 1: Time for staticMatrix * staticMatrix multiplication: " << (double)(end - start) / CLOCKS_PER_SEC << " seconds" << endl;
 
-    // Measure time for stack matrix multiplication
+    // Case 2: staticMatrix * stackMatrix
     start = clock();
-    for (int i = 0; i < NUM_MULTIPLICATIONS; ++i) {
-        multiplyMatrix(stackMatrix, stackMatrix, stackMatrix);
-    }
+    for (int i = 0; i < iterations; i++)
+        matrix_times_matrix(staticMatrix, stackMatrix);
     end = clock();
-    cout << "Time for stack matrix multiplication: " << (double)(end - start) / CLOCKS_PER_SEC << " seconds" << endl;
+    cout << "Case 2: Time for staticMatrix * stackMatrix multiplication: " << (double)(end - start) / CLOCKS_PER_SEC << " seconds" << endl;
 
-    // Measure time for heap matrix multiplication
+    // Case 3: stackMatrix * heapMatrix
     start = clock();
-    for (int i = 0; i < NUM_MULTIPLICATIONS; ++i) {
-        multiplyHeapMatrix(heapMatrix1, heapMatrix2, heapMatrix1); // Reusing heapMatrix1 for the result
-    }
+    for (int i = 0; i < iterations; i++)
+        matrix_times_matrix(stackMatrix, heapMatrix);
     end = clock();
-    cout << "Time for heap matrix multiplication: " << (double)(end - start) / CLOCKS_PER_SEC << " seconds" << endl;
+    cout << "Case 3: Time for stackMatrix * heapMatrix multiplication: " << (double)(end - start) / CLOCKS_PER_SEC << " seconds" << endl;
 
-    // Deallocate memory for heap matrices
-    for (int i = 0; i < SIZE; ++i) {
-        delete[] heapMatrix1[i];
-        delete[] heapMatrix2[i];
-    }
-    delete[] heapMatrix1;
-    delete[] heapMatrix2;
+    // Case 4: stackMatrix * stackMatrix
+    start = clock();
+    for (int i = 0; i < iterations; i++) 
+        matrix_times_matrix(stackMatrix, stackMatrix);
+    end = clock();
+    cout << "Case 4: Time for stackMatrix * stackMatrix multiplication: " << (double)(end - start) / CLOCKS_PER_SEC << " seconds" << endl;
+
+    // Case 5: stackMatrix * heapMatrix
+    start = clock();
+    for (int i = 0; i < iterations; i++)
+        matrix_times_matrix(stackMatrix, heapMatrix);
+    end = clock();
+    cout << "Case 5: Time for stackMatrix * heapMatrix multiplication: " << (double)(end - start) / CLOCKS_PER_SEC << " seconds" << endl;
+
+    // Case 6: heapMatrix * heapMatrix
+    start = clock();
+    for (int i = 0; i < iterations; i++) 
+        matrix_times_matrix(heapMatrix, heapMatrix);
+    end = clock();
+    cout << "Case 6: Time for heapMatrix * heapMatrix multiplication: " << (double)(end - start) / CLOCKS_PER_SEC << " seconds" << endl;
+
+    // Deallocate memory for heap matrix
+    for (int i = 0; i < SIZE; i++) 
+        delete[] heapMatrix[i];
+    delete[] heapMatrix;
 
     return 0;
 }
