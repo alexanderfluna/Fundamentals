@@ -48,7 +48,7 @@ int main() {
     clock_t start, end;
 
     // Choose a slightly smaller number of iterations, and repeat the experiment with all four functions, with this number of iterations. 
-    int iterations = 100000 - 1000;
+    int iterations = 100000 - 10000;
 
     // Measure time used by static array allocation
     start = clock();

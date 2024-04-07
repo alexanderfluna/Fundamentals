@@ -62,17 +62,3 @@ int main() {
 
     return 0;
 }
-
-/*
-This code creates three functions: one for statically declaring large 2D arrays, one for creating them on the stack, and one for creating them on the heap. It then measures the time taken for each function to execute by calling them 100,000 times each. Finally, it outputs the measured times.
-
-Explanation of results:
-
-Static array declaration: Static allocation of memory is typically very fast because the memory for static arrays is allocated at compile-time. Since the memory is allocated once during program initialization, the overhead of repeated allocation is avoided. Therefore, this should be the fastest among the three methods.
-
-Stack array creation: Stack allocation is also fast as it involves incrementing the stack pointer, but it may be slightly slower than static allocation due to the overhead of stack management. However, since stack memory is automatically deallocated when the function exits, there is no need to explicitly free memory, which may make it faster compared to heap allocation.
-
-Heap array creation: Heap allocation involves more overhead because it requires dynamic memory allocation and deallocation, which involves finding a suitable block of memory and updating memory management data structures. Therefore, heap allocation is generally slower compared to stack and static allocation. Additionally, since heap-allocated memory must be manually deallocated to avoid memory leaks, this method also incurs the overhead of explicit deallocation.
-
-In summary, you would expect static array declaration to be the fastest, followed by stack array creation, and then heap array creation to be the slowest.
-*/
