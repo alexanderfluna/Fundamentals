@@ -73,3 +73,9 @@ int main() {
 
     return 0;
 }
+
+/*
+               a = 10;
+         b = a + fun(a); // a passed by reference 
+         //Assume that fun changes its parameter
+*/
