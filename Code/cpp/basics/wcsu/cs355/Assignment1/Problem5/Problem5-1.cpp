@@ -74,8 +74,16 @@ int main() {
     return 0;
 }
 
-/*
+/**
                a = 10;
          b = a + fun(a); // a passed by reference 
          //Assume that fun changes its parameter
-*/
+
+         int a = 5;
+        int fun1() {
+        a = 17;
+        return 3;
+        } /* end of fun1 */
+//        void main() {
+  //      a = a + fun1();
+    //    } /* end of main */
