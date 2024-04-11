@@ -2,88 +2,52 @@
 #include <iostream>
 using namespace std;
 
-int functionCallCount = 0;
-
-double func1() {
-    cout << "Function 1 is called." << endl;
-    functionCallCount++;
+int func1() {
     return 1;
 }
 
-double func2() {
-    cout << "Function 2 is called." << endl;
-    functionCallCount++;
+int func2() {
     return 2;
 }
 
-double func3() {
-    cout << "Function 3 is called." << endl;
-    functionCallCount++;
+int func3() {
     return 3;
 }
 
-double func4() {
-    cout << "Function 4 is called." << endl;
-    functionCallCount++;
+int func4() {
     return 4;
 }
 
+int fun(int* a) {
+    *a = 3;
+    return 5;
+}
+
 int main() {
-    // Case 1
-    double result = 1 + func2();
-    cout << "1 + 2 = " << result << "\n" << endl;
+    int result = func1() + 2 - 3 + func1();
+    cout << "Case 1: \n 1 + 2 - 3 + 1 = " << result << "\n\n";
 
-    // Case 2
-    result = 2 - func1();
-    cout << "2 - 1 = " << result << "\n" << endl;
+    result = func4() - 1 * func2();
+    cout << "Case 2: \n 4 - 1 * 2 = " << result << "\n\n";
 
-    // Case 3
-    result = 3 * func4();
-    cout << "3 * 4 = " << result << "\n" << endl;
-    
-    // Case 4
-    result = 4 / func3();
-    cout << "4 / 3 = " << result << "\n" << endl;
+    result = 1 + 6 / func3();
+    cout << "Case 3: \n 1 + 6 / 3 = " << result << "\n\n";
 
-    // Case 5
-    result = func1() + func2() * func3();
-    cout << "1 + 2 * 3 = " << result << "\n" << endl;
+    result = 2 - -func2();
+    cout << "Case 4: \n 2 - (-2) = " << result << "\n\n";
 
-    // Case 6
-    result = (func1() + func2()) * func3();
-    cout << "(1 + 2) * 3 = " << result << "\n" << endl;
+    result = func3() / (func2() + func1()) + func4();
+    cout << "Case 5: \n 3 / (1 + 2) = " << result << "\n" << endl;
 
-    // Case 7
-    result = func3() / func3();
-    cout << "3 / 3 = " << result << "\n" << endl;
+    result = (func4() - func2()) * func3();
+    cout << "Case 6: \n (4 - 2) * 3 = " << result << "\n\n";
 
-    // Case 8
-    result = func1() / func4();
-    cout << "1 / 4 = " << result << "\n" << endl;
+    result = func1() - -func2() * func3();
+    cout << "Case 7: \n 1 - -2 * 3 = " << result << "\n\n";
 
-    // Case 9
-    result = func1() * func2() / func3();
-    cout << "1 * 2 / 3 = " << result << "\n" << endl;
-
-    // Case 10
-    result =  func3() / (func1() - func2());
-    cout << "3 / (1 - 2) = " << result << "\n" << endl;
-
-    cout << "functionCallCount: " << functionCallCount << endl;
+    int a = 10;
+    result = a + fun(&a); // a passed by reference
+    cout << "Case 8: \n a + fun(&a) = " << result << "\n\n";
 
     return 0;
 }
-
-/**
-               a = 10;
-         b = a + fun(a); // a passed by reference 
-         //Assume that fun changes its parameter
-
-         int a = 5;
-        int fun1() {
-        a = 17;
-        return 3;
-        } /* end of fun1 */
-//        void main() {
-  //      a = a + fun1();
-    //    } /* end of main */

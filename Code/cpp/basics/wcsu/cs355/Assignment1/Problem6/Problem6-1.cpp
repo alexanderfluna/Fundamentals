@@ -65,3 +65,69 @@ int main() {
 
     return 0;
 }
+
+/*
+// Alexander Luna | Assignment 1 | Problem 6-1.cpp
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+void myFunc(double a) {
+    cout << "The argument is: " << a << endl;
+}
+
+void myFunc(double a, double b, double c){
+    cout << "The first argument is: " << a << endl;
+    cout << "The second argument is: " << b << endl;
+    cout << "The third argument is: " << c << endl;
+}
+
+int main() {
+    // Case 1
+    cout << "" << endl;
+    myFunc(2 + 3 * 4);
+
+    // Case 2
+    cout << "" << endl;
+    myFunc( sqrt(4 * 2) );
+
+    // Case 3
+    cout << "" << endl;
+    myFunc(3.0 / 4.0, 5.5 * 2.0);
+
+    // Case 4
+    cout << "" << endl;
+    myFunc(3.0 / 4.0, 5.5 * 2.0);
+
+    // Case 5
+    cout << "" << endl;
+    myFunc();
+
+    // Case 6
+    cout << "" << endl;
+    myFunc();
+
+    // Case 7
+    cout << "" << endl;
+    myFunc();
+
+    // Case 8
+    cout << "" << endl;
+    myFunc();
+
+    // Case 9
+    cout << "" << endl;
+    myFunc( ( (1 + 2) * 3) / (4 - 1) );
+
+    // Case 10
+    cout << "Case 10: myFunc(x++, x++, x++)" << endl;
+    double x = 1;
+    cout << "The value of x before the function call: " << x << endl;
+    myFunc(x++, x++, x++);
+    cout << "The value of after the function call: " << x << endl;
+
+    return 0;
+}
+
+
+*/
