@@ -48,7 +48,15 @@ int main(array<System::String^>^ args) {
     int a = 10;
     result = a + fun(a);
     Console::WriteLine("Case 8: \n a + fun(a) = {0}", result);
-    Console::WriteLine("After the exeuction of fun(a), the value of a is = {0}", a);
+    Console::WriteLine(" After the exeuction of fun(a), the value of a is = {0}\n", a);
+
+    int b = 2;
+    result = func3() * ++b;
+    Console::WriteLine("Case 9: \n 3 * ++2 = {0}\n", result);
+
+    int c = 3;
+    bool answer = (5 > func1() + 2 || 4 == --c + 2) && 3 != 3 % 1;
+    Console::WriteLine("Case 10: \n (5 > 1 + 2 || 4 == --c + 2) && 3 != 3 % 1 => {0}", answer);
 
     return 0;
 }

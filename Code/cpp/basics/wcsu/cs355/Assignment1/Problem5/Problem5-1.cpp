@@ -46,8 +46,16 @@ int main() {
     cout << "Case 7: \n 1 - -2 * 3 = " << result << "\n\n";
 
     int a = 10;
-    result = a + fun(&a); // a passed by reference
+    result = a + fun(&a);
     cout << "Case 8: \n a + fun(&a) = " << result << "\n\n";
+
+    int b = 2;
+    result = func3() * ++b;
+    cout << "Case 9: \n 3 * ++2 = " << result << "\n\n";
+
+    int c = 3;
+    bool answer = (5 > func1() + 2 || 4 == --c + 2) && 3 != 3 % 1;
+    cout << "Case 10: \n (5 > 1 + 2 || 4 == --c + 2) && 3 != 3 % 1 => " << answer << "\n";
 
     return 0;
 }
