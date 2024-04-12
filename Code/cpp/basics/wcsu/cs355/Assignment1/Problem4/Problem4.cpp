@@ -3,45 +3,50 @@
 #include <ctime>
 
 const int SIZE = 100;
-const int iterations = 1000000;
+// Test with different # of iterations
+const int ITERATIONS = 200000;
 
-// Function to access array elements using subscripting
-void accessArrayWithSubscript(int arr[SIZE][SIZE]) {
-    for (int i = 0; i < SIZE; ++i) {
-        for (int j = 0; j < SIZE; ++j)
-            arr[i][j] = i + j; // Accessing elements using subscripting
+// Function using subscripting
+void accessWithSubscripting(int arr[SIZE][SIZE]) {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) 
+            int value = arr[i][j];
     }
 }
 
-// Function to access array elements using pointer arithmetic
-void accessArrayWithPointer(int* arr) {
-    for (int i = 0; i < SIZE; ++i) {
-        for (int j = 0; j < SIZE; ++j)
-            *(arr + i * SIZE + j) = i + j; // Accessing elements using pointer arithmetic
+// Function using pointer arithmetic
+void accessWithPointer(int* arr) {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) 
+            int value = *(arr + i * SIZE + j);
     }
 }
 
 int main() {
-    int arr[SIZE][SIZE];
     clock_t start, end;
+    int arr[SIZE][SIZE];
 
-    // Perform the first method 1,000,000 times
+    // Initialize array with random values
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++)
+            arr[i][j] = rand() % 100;
+    }
+
+    // Measure time for function using subscripting
     start = clock();
-    for (int i = 0; i < iterations; ++i)
-        accessArrayWithSubscript(arr);
+    for (int i = 0; i < ITERATIONS; i++) 
+        accessWithSubscripting(arr);
     end = clock();
+    double time = double(end - start) / CLOCKS_PER_SEC;
+    std::cout << "Time taken with subscripting: " << time << " seconds" << std::endl;
 
-    // Print time for the first method in milliseconds
-    std::cout << "Average time taken with subscripting: " << double(end - start) / CLOCKS_PER_SEC << " seconds" << std::endl;
-
-    // Perform the second method 1,000,000 times
+    // Measure time for function using pointer arithmetic
     start = clock();
-    for (int i = 0; i < iterations; ++i)
-        accessArrayWithPointer(&arr[0][0]);
+    for (int i = 0; i < ITERATIONS; i++)
+        accessWithPointer(&arr[0][0]);
     end = clock();
-
-    // Print time for the second method in milliseconds
-    std::cout << "Average time taken with pointer arithmetic: " << double(end - start) / CLOCKS_PER_SEC << " seconds" << std::endl;
+    time = double(end - start) / CLOCKS_PER_SEC;
+    std::cout << "Time taken with pointer arithmetic: " << time << " seconds" << std::endl;
 
     return 0;
 }

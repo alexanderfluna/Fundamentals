@@ -4,6 +4,7 @@ using namespace std;
 
 // Arrays will be of size 100 x 100
 const int SIZE = 100;
+const int ITERATIONS = 100000;
 
 // Declares statically two equally large square two-dimensional arrays
 void static_array_declaration() {
@@ -36,26 +37,25 @@ void heap_array_declaration() {
 
 
 int main() {
-    int iterations = 100000;
     clock_t start, end;
 
     // Measure time used by static array allocation
     start = clock();
-    for (int i = 0; i < iterations; ++i)
+    for (int i = 0; i < ITERATIONS; ++i)
         static_array_declaration();
     end = clock();
     cout << "Time used by static array allocation: " << double(end - start) / CLOCKS_PER_SEC << " seconds" << endl;
 
     // Measure time used by stack array allocation
     start = clock();
-    for (int i = 0; i < iterations; ++i)
+    for (int i = 0; i < ITERATIONS; ++i)
         stack_array_declaration();
     end = clock();
     cout << "\nTime used by stack array allocation: " << double(end - start) / CLOCKS_PER_SEC << " seconds" << endl;
 
     // Measure time used by heap array allocation with deallocation
     start = clock();
-    for (int i = 0; i < iterations; ++i)
+    for (int i = 0; i < ITERATIONS; ++i)
         heap_array_declaration();
     end = clock();
     cout << "\nTime used by heap array allocation with deallocation: " << double(end - start) / CLOCKS_PER_SEC << " seconds" << endl;

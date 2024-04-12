@@ -5,6 +5,9 @@ using namespace std;
 // Arrays will be of size 100 x 100
 const int SIZE = 100;
 
+// Choose a slightly smaller number of ITERATIONS, and repeat the experiment with all four functions, with this number of ITERATIONS. 
+const int ITERATIONS = 100000 - 10000;
+
 // Declares statically two equally large square two-dimensional arrays
 void static_array_declaration() {
     static int arr1[SIZE][SIZE];
@@ -47,26 +50,23 @@ void heap_array_declaration_without_deallocation() {
 int main() {
     clock_t start, end;
 
-    // Choose a slightly smaller number of iterations, and repeat the experiment with all four functions, with this number of iterations. 
-    int iterations = 100000 - 10000;
-
     // Measure time used by static array allocation
     start = clock();
-    for (int i = 0; i < iterations; ++i)
+    for (int i = 0; i < ITERATIONS; ++i)
         static_array_declaration();
     end = clock();
     cout << "Time used by static array allocation: " << double(end - start) / CLOCKS_PER_SEC << " seconds" << endl;
 
     // Measure time used by stack array allocation
     start = clock();
-    for (int i = 0; i < iterations; ++i)
+    for (int i = 0; i < ITERATIONS; ++i)
         stack_array_declaration();
     end = clock();
     cout << "\nTime used by stack array allocation: " << double(end - start) / CLOCKS_PER_SEC << " seconds" << endl;
 
     // Measure time used by heap array allocation with deallocation
     start = clock();
-    for (int i = 0; i < iterations; ++i)
+    for (int i = 0; i < ITERATIONS; ++i)
         heap_array_declaration();
     end = clock();
     cout << "\nTime used by heap array allocation with deallocation: " << double(end - start) / CLOCKS_PER_SEC << " seconds" << endl;
@@ -84,7 +84,7 @@ int main() {
     }
     end = clock();
     cout << "\nHeap array allocation without deallocation: " << endl;
-    cout << "The memory has exhuasted in " << double(end - start) / CLOCKS_PER_SEC << " seconds after " << count << " iterations." << endl;
+    cout << "The memory has exhuasted in " << double(end - start) / CLOCKS_PER_SEC << " seconds after " << count << " ITERATIONS." << endl;
 
     return 0;
 }
