@@ -11,7 +11,7 @@ enum class Shape {
 
 // Case 1: Is an enumeration constant allowed to appear in more than one type definition?
 // In C++/CLI, this is allowed
-enum Quadrilateral {
+enum class Quadrilateral {
     Square,
     Rectangle
 };
@@ -61,19 +61,37 @@ int main(array<System::String^>^ args) {
     else
         Console::WriteLine("The shapes are not the same.");
 
+
+
     // Case 6: Are enumeration values coerced to integer?
+    
+    // Uncommenting the line below gives us an error
+    // Console::WriteLine("The value of the shape is: {0}", shape);
+
+    // Instead, we must explicitiy cast to an integer
     Console::WriteLine("The value of the shape is: {0}", static_cast<int>(shape));
+
+
 
     // Case 7: The enumeration constants are implicitly assigned the integer
     // values 0, 1, ... but can be explicitly assigned any integer literal
     shape = static_cast <Shape>(100);
     Console::WriteLine("The new value of the shape is: {0}", static_cast<int>(shape));
 
+
+
     // Case 8: Are another other types coerced to an enumeration type?
     char character;
-    //character = Shape::Rectangle;
-    // If you uncomment the line above, you get an error that a value
+
+    // If you uncomment the line below, you get an error that a value
     // type "Shape" cannot be assigned to an entity of type "char"
+    //character = Shape::Rectangle;
+
+    // Instead, we must explicitiy cast to the enuemration type
+    character = static_cast<char>(Shape::Rectangle);
+    Console::WriteLine("The value of character is: {0} ", static_cast<char>(character));
+
+
 
     // Case 9: Using enumeration type as function parameter
     printArea(Shape::Circle, 3);        // Radius
@@ -104,8 +122,8 @@ int main(array<System::String^>^ args) {
         }
     }
 
-    // Case 12:
-    Class ^myHouse = gcnew Class(Quadrilateral::Square);
+    // Case 12: Using enumeration type as class member
+    Class^ myHouse = gcnew Class(Quadrilateral::Square);
 
     // Case 13: Combining enum values using bitwise OR
     enum class Permission {

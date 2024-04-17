@@ -3,13 +3,12 @@
 #include <ctime>
 
 const int SIZE = 100;
-// Test with different # of iterations
 const int ITERATIONS = 200000;
 
 // Function using subscripting
 void accessWithSubscripting(int arr[SIZE][SIZE]) {
     for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) 
+        for (int j = 0; j < SIZE; j++)
             int value = arr[i][j];
     }
 }
@@ -17,7 +16,7 @@ void accessWithSubscripting(int arr[SIZE][SIZE]) {
 // Function using pointer arithmetic
 void accessWithPointer(int* arr) {
     for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) 
+        for (int j = 0; j < SIZE; j++)
             int value = *(arr + i * SIZE + j);
     }
 }
@@ -34,7 +33,7 @@ int main() {
 
     // Measure time for function using subscripting
     start = clock();
-    for (int i = 0; i < ITERATIONS; i++) 
+    for (int i = 0; i < ITERATIONS; i++)
         accessWithSubscripting(arr);
     end = clock();
     double time = double(end - start) / CLOCKS_PER_SEC;

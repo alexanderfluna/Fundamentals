@@ -84,7 +84,7 @@ int main() {
     }
     end = clock();
     cout << "\nHeap array allocation without deallocation: " << endl;
-    cout << "The memory has exhuasted in " << double(end - start) / CLOCKS_PER_SEC << " seconds after " << count << " ITERATIONS." << endl;
+    cout << "The memory has exhuasted in " << double(end - start) / CLOCKS_PER_SEC << " seconds after " << count << " iterations." << endl;
 
     return 0;
 }

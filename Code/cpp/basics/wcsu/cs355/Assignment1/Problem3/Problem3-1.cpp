@@ -66,7 +66,7 @@ int main() {
     shape = (Shape)100;
     cout << "The new value of the shape is: " << shape << endl;
 
-    // Case 8: Are another other types coerced to an enumeration type?
+    // Case 8: Are other types coerced to an enumeration type?
     char character;
     character = Rectangle;
     cout << "The value of character is: " << (Shape)character << endl;
