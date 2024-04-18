@@ -1,4 +1,4 @@
-// Alexander Luna | Assignment 1 | Problem4.cpp
+// Alexander Luna | Assignment 1 | Problem4.cpp (C++)
 #include <iostream>
 #include <ctime>
 

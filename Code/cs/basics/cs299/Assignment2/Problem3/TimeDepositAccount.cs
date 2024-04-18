@@ -44,7 +44,7 @@ namespace TestingProject
             if (monthsToMaturity > 0)
             {
                 // Withdraw the money plus a penalty rate
-                Console.WriteLine("\tEarly withdrawal penalty of 10% charged:");
+                Console.WriteLine("\tEarly withdrawal penalty of 10% charged.");
                 base.Withdraw(amount += amount * PENALTY_RATE);
             }
             else

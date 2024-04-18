@@ -1,4 +1,4 @@
-// Alexander Luna | Assignment 1 | Problem 3-2.cpp
+// Alexander Luna | Assignment 1 | Problem 3-2.cpp (C++/CLI)
 #include <iostream>
 using namespace System;
 

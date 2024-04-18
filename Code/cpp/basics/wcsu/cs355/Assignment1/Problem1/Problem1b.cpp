@@ -1,4 +1,4 @@
-// Alexander Luna | Assignment 1 | Problem1b.cpp
+// Alexander Luna | Assignment 1 | Problem1b.cpp (C++)
 #include <iostream>
 using namespace std;
 
