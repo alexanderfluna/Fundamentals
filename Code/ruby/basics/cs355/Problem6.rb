@@ -1,32 +1,43 @@
-# Experiment 1: Function with no return statement
-puts "Experiment 1: Function with no return statement"
+# Alexander Luna | Assignment 2 | Problem6.rb
 
-def no_return
-  x = 42
-  y = "Hello"
+# Case 1:
+puts "Case 1:"
+
+def case1
+  str = "Hello world"
 end
 
-result = no_return
-puts "Result: #{result.inspect}"  # Output: Result: nil
+result = case1
+puts "Result: #{result}"
 
-# Experiment 2: Function with a single expression
-puts "\nExperiment 2: Function with a single expression"
+# Case 2
+puts "\nCase 2:"
 
-def single_expression
-  "Hello, World!"
+def case2
+  x = 45
+  y = 23
 end
 
-result = single_expression
-puts "Result: #{result}"  # Output: Result: Hello, World!
+result = case2
+puts "Result: #{result}"
 
-# Experiment 3: Function with multiple expressions
-puts "\nExperiment 3: Function with multiple expressions"
+# Case 3:
+puts "\nCase 3"
 
-def multiple_expressions
-  x = 42
-  y = "Hello"
+def case3
+  x = "hello"
+  y = 2
   [x, y]
 end
 
-result = multiple_expressions
-puts "Result: #{result.inspect}"  # Output: Result: [42, "Hello"]
+result = case3
+puts "Result: #{result}"
+
+# Case 4:
+puts "\nCase 4"
+def case4
+  puts "No assignment"
+end
+
+result = case4
+puts "Result: #{result.inspect}"
