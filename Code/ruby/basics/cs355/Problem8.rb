@@ -1,27 +1,22 @@
 # Alexander Luna | Assignment 2 | Problem8.rb
-# Experiment to test static or dynamic type checking in Ruby
 
-# Define a method that takes two parameters and adds them
-def add(x, y)
-  puts "Result: #{x + y}"
+class Person
+  attr_accessor :name, :age
+
+  def initialize(name, age)
+    @name = name
+    @age = age
+  end
 end
 
-# Case 1: Call the method with integer arguments
-puts "Case 1: Calling the method with integer arguments"
-add(5, 10)
+puts "Case 1:\n"
+person1 = Person.new("Alice", 25)
+person1.age = "thirty"
+puts person1.name
+puts person1.age
 
-# Case 2: Call the method with string arguments
-puts "\nCase 2: Calling the method with string arguments"
-begin
-  add("Hello", "World")
-rescue TypeError => e
-  puts "Error: #{e.message}"
-end
-
-# Case 3: Call the method with one integer and one string argument
-puts "\nCase 3: Calling the method with one integer and one string argument"
-begin
-  add(5, "World")
-rescue TypeError => e
-  puts "Error: #{e.message}"
-end
+puts "\nCase 2:\n"
+person2 = Person.new(30, "Bob")
+person2.name = 40
+puts person2.name
+puts person2.age
