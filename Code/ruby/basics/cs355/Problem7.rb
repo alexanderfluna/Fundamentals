@@ -1,46 +1,49 @@
-# Experiment 1: Passing immutable objects (numbers, booleans, symbols, etc.)
-puts "Experiment 1: Passing immutable objects"
+# Alexander Luna | Assignment 2 | Problem7.rb
 
-def update_value(x)
-  x = 42
-  puts "Inside update_value: x = #{x}"
+# Case 1: Passing immutable object
+puts "Case 1: Passing immutable objects"
+
+def update_value(value)
+  value = 23
+  puts "Inside update_value: #{value}"
 end
 
-a = 10
-puts "Before calling update_value: a = #{a}"
-update_value(a)
-puts "After calling update_value: a = #{a}"
+value = 10
+puts "Before calling update_value: #{value}"
+update_value(value)
+puts "After calling update_value: #{value}"
 
-# Experiment 2: Passing mutable objects (arrays, hashes, etc.)
-puts "\nExperiment 2: Passing mutable objects"
+# Case 2: Passing mutable object
+puts "\nCase 2: Passing mutable objects"
 
 def update_array(arr)
-  arr[0] = 99
-  puts "Inside update_array: arr = #{arr.inspect}"
+  arr << 4
+  puts "Inside update_array: #{arr.inspect}"
 end
 
 numbers = [1, 2, 3]
-puts "Before calling update_array: numbers = #{numbers.inspect}"
+puts "Before calling update_array: #{numbers.inspect}"
 update_array(numbers)
-puts "After calling update_array: numbers = #{numbers.inspect}"
+puts "After calling update_array:  #{numbers.inspect}"
 
-# Experiment 3: Passing objects by reference
-puts "\nExperiment 3: Passing objects by reference"
+# Case 3: Passing class instances
+puts "\nCase 3: Passing class instances"
 
 class Person
-  attr_accessor :name
-
-  def initialize(name)
+  attr_accessor :name, :age
+  def initialize(name, age)
     @name = name
+    @age = age
   end
 end
 
 def update_person(person)
   person.name = "Bob"
-  puts "Inside update_person: person.name = #{person.name}"
+  person.age = 30
+  puts "Inside update_person: #{person.name} #{person.age}"
 end
 
-person = Person.new("Alice")
-puts "Before calling update_person: person.name = #{person.name}"
+person = Person.new("Alice", 25)
+puts "Before calling update_person: = #{person.name} #{person.age}"
 update_person(person)
-puts "After calling update_person: person.name = #{person.name}"
+puts "After calling update_person: #{person.name} #{person.age}"
