@@ -23,7 +23,7 @@ else
   puts "The value is #{value}"
 end
 
-# Case 4: Define a method that attempts to access the local variable
+# Case 4: Define a method that attempts to access the variable
 puts "\nCase 4: Define a method that attempts to access the variable\n"
 def method1
   # Uncommenting the line belows gives us the error:
