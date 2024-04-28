@@ -1,6 +1,7 @@
 // Alexander Luna | Assignment 3 | Bundle.cs
+using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace Assignment3
 {
@@ -12,32 +13,31 @@ namespace Assignment3
     /// </summary>
     public class Bundle : LineItem
     {
-        public string Name { get; set; }
-        public double Price { get; set; }
+        public double Price
+        {
+            get { return items.Sum(item => item.Price); }
+            set { throw new NotImplementedException(); }
+        }
 
         private List<LineItem> items;
 
-        public Bundle(string name)
+        public Bundle()
         {
-            Name = name;
-            Price = 0;
             items = new List<LineItem>();
         }
 
         public void AddItem(LineItem item)
         {
             items.Add(item);
-            Price += item.Price;
         }
 
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Bundle: {Name}");
-            foreach (LineItem item in items)
-                sb.AppendLine($"\t{item}");
-            sb.AppendLine($"Total: {Price:C}");
-            return sb.ToString();
+            string output = "\tBundle:\n";
+            foreach (var item in items)
+                output += $"\t{item}\n";
+            output += $"\t\tTotal: ${Price}";
+            return output;
         }
     }
 }

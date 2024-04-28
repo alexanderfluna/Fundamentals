@@ -1,4 +1,5 @@
 // Alexander Luna | Assignment 3 | Order.cs
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,13 @@ namespace Assignment3
     /// </summary>
     public class Order
     {
+
+        public double Price
+        {
+            get { return items.Sum(i => i.Price); }
+            set { throw new NotImplementedException(); }
+        }
+
         private List<LineItem> items;
 
         public Order()
@@ -25,17 +33,13 @@ namespace Assignment3
             items.Add(item);
         }
 
-        public double Price
-        {
-            get { return items.Sum(i => i.Price); }
-        }
-
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            string output = "";
             foreach (LineItem item in items)
-                sb.AppendLine($"{item}");
-            return sb.ToString();
+                output += $"{item}\n";
+            output += $"Order Total: ${Price}";
+            return output;
         }
     }
 }

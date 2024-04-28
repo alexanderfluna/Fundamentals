@@ -19,7 +19,7 @@ namespace Assignment3
 
         public override string ToString()
         {
-            return $"Product: {Name}, Price: {Price:c}";
+            return $"\tProduct: {Name}, Price: {Price:c}";
         }
     }
 }
