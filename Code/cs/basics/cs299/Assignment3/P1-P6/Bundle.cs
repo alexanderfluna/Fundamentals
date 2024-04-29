@@ -36,7 +36,7 @@ namespace Assignment3
             string output = "\tBundle:\n";
             foreach (var item in items)
                 output += $"\t{item}\n";
-            output += $"\t\tTotal: ${Price}";
+            output += $"\t\tBundle Total: ${Price}";
             return output;
         }
     }
