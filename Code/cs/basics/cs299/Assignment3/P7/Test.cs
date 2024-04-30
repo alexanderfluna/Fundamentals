@@ -31,7 +31,7 @@ namespace Assignment3
 
             // Iterate over each product in order1
             Console.WriteLine("Iterating over each product in order 1:");
-            foreach (LineItem item in new OrderIterator(order1))
+            foreach (LineItem item in order1.GetProducts())
             {
                 Console.WriteLine(item);
             }
@@ -48,7 +48,7 @@ namespace Assignment3
 
             // Iterate over each product in order2
             Console.WriteLine("\nIterating over each product in order 2:");
-            foreach (LineItem item in new OrderIterator(order2))
+            foreach (LineItem item in order2.GetProducts())
             {
                 Console.WriteLine(item);
             }
@@ -74,7 +74,7 @@ namespace Assignment3
 
             // Iterate over each product in order3
             Console.WriteLine("\nIterating over each product in order 3:");
-            foreach (LineItem item in new OrderIterator(order3))
+            foreach (LineItem item in order3.GetProducts())
             {
                 Console.WriteLine(item);
             }

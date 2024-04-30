@@ -40,7 +40,8 @@ namespace Assignment3
             // Create order 2 with discounted stereo system bundle
             Order order2 = new Order();
             order2.AddItem(discounted_stereo_system);
-            Console.WriteLine("\nOrder 2:\n" + order2);
+            Console.WriteLine("==============================================================");
+            Console.WriteLine("Order 2:\n" + order2);
 
 
             // Order 3:
@@ -61,8 +62,8 @@ namespace Assignment3
             Order order3 = new Order();
             order3.AddItem(computer);
             order3.AddItem(discounted_speakers);
-            Console.WriteLine("\nOrder 3:\n" + order3);
-
+            Console.WriteLine("==============================================================");
+            Console.WriteLine("Order 3:\n" + order3);
         }
     }
 }

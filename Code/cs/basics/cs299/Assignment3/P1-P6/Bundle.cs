@@ -34,7 +34,7 @@ namespace Assignment3
         public override string ToString()
         {
             string output = "\tBundle:\n";
-            foreach (var item in items)
+            foreach (LineItem item in items)
                 output += $"\t{item}\n";
             output += $"\t\tBundle Total: ${Price}";
             return output;

@@ -42,9 +42,26 @@ namespace Assignment3
             return output;
         }
 
-        public IEnumerable<LineItem> GetLineItems()
+        public IEnumerable<LineItem> GetProducts()
         {
-            return items;
+            foreach (LineItem item in items)
+            {
+                if (item is Product)
+                {
+                    yield return (Product)item;
+                }
+                if (item is DiscountedItem)
+                {
+                    yield return (DiscountedItem)item;
+                }
+                else if (item is Bundle)
+                {
+                    foreach (LineItem bundleItem in ((Bundle)item).GetProducts())
+                    {
+                        yield return bundleItem;
+                    }
+                }
+            }
         }
     }
 }
