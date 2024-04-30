@@ -1,9 +1,13 @@
+// Alexander Luna | Assignment 3 | OrderIterator.cs
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
 namespace Assignment3
 {
+    /// <summary>
+    /// 7. Make an iterator to iterate over each product in an order.
+    /// </summary>
     public class OrderIterator : IEnumerable<LineItem>
     {
         private Order order;
@@ -26,16 +30,16 @@ namespace Assignment3
                 {
                     yield return product;
                 }
+                else if (item is DiscountedItem discountedItem)
+                {
+                    yield return discountedItem;
+                }
                 else if (item is Bundle bundle)
                 {
                     foreach (var bundleProduct in GetProducts(bundle.GetLineItems()))
                     {
                         yield return bundleProduct;
                     }
-                }
-                else if (item is DiscountedItem discountedItem)
-                {
-                    yield return discountedItem;
                 }
             }
         }

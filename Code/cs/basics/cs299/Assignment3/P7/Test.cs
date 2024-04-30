@@ -4,7 +4,7 @@ using System;
 namespace Assignment3
 {
     /// <summary>
-    /// 6. Provide a test class to test the classes developed so far.
+    /// 7.	Make an iterator to iterate over each product in an order. And a test class to test it.
     /// </summary>
     public class Test
     {
