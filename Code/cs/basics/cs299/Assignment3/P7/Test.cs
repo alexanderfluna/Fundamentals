@@ -1,4 +1,4 @@
-// Alexander Luna | Assignment 3 | Test.cs
+// Alexander Luna | Assignment 3 | Test7.cs
 using System;
 
 namespace Assignment3
@@ -6,13 +6,13 @@ namespace Assignment3
     /// <summary>
     /// 7.	Make an iterator to iterate over each product in an order. And a test class to test it.
     /// </summary>
-    public class Test
+    public class Test7
     {
         public static void Main()
         {
             // ORDER 1:
 
-            // Create products for stereo system bundle
+            // Create products for order 1
             Product tuner = new Product("Tuner", 10);
             Product amplifier = new Product("Amplifier", 20);
             Product cd_player = new Product("CD player", 30);
@@ -25,12 +25,12 @@ namespace Assignment3
             stereo_system.AddItem(cd_player);
             stereo_system.AddItem(speakers);
 
-            // Create order with stereo system bundle
+            // Create order 1 with stereo system bundle
             Order order1 = new Order();
             order1.AddItem(stereo_system);
-            Console.WriteLine("Iterating over each product in order 1:");
 
             // Iterate over each product in order1
+            Console.WriteLine("Iterating over each product in order 1:");
             foreach (LineItem item in new OrderIterator(order1))
             {
                 Console.WriteLine(item);
@@ -42,12 +42,12 @@ namespace Assignment3
             // Discount the stereo system bundle to half off
             DiscountedItem discounted_stereo_system = new DiscountedItem(stereo_system, .50);
 
-            // Create order with discounted stereo system bundle
+            // Create order 2 with discounted stereo system bundle
             Order order2 = new Order();
             order2.AddItem(discounted_stereo_system);
-            Console.WriteLine("\nIterating over each product in order 2:");
 
             // Iterate over each product in order2
+            Console.WriteLine("\nIterating over each product in order 2:");
             foreach (LineItem item in new OrderIterator(order2))
             {
                 Console.WriteLine(item);
@@ -67,13 +67,13 @@ namespace Assignment3
             computer.AddItem(keyboard);
             computer.AddItem(mouse);
 
-            // Create order with computer bundle and discounted speakers
+            // Create order 3 with computer bundle and discounted speakers
             Order order3 = new Order();
             order3.AddItem(computer);
             order3.AddItem(discounted_speakers);
-            Console.WriteLine("\nIterating over each product in order 3:");
 
             // Iterate over each product in order3
+            Console.WriteLine("\nIterating over each product in order 3:");
             foreach (LineItem item in new OrderIterator(order3))
             {
                 Console.WriteLine(item);
