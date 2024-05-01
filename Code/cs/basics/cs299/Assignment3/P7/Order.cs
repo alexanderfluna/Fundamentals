@@ -42,6 +42,7 @@ namespace Assignment3
             return output;
         }
 
+        // This function returns all products in the order including discounted items
         public IEnumerable<LineItem> GetProducts()
         {
             foreach (LineItem item in items)

@@ -39,6 +39,7 @@ namespace Assignment3
             return output + "\n\t";
         }
 
+        // This function returns all products in the bundle including discounted items
         public IEnumerable<LineItem> GetProducts()
         {
             foreach (LineItem item in items)

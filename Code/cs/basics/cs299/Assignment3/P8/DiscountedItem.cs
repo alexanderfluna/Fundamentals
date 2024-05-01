@@ -10,6 +10,12 @@ namespace Assignment3
     /// </summary>
     public class DiscountedItem : LineItem
     {
+        public double Price
+        {
+            get { return item.Price * (1 - discount); }
+            set { item.Price = value / (1 - discount); }
+        }
+
         private LineItem item;
         private double discount;
 
@@ -19,15 +25,9 @@ namespace Assignment3
             this.discount = discount;
         }
 
-        public double Price
-        {
-            get { return item.Price * (1 - discount); }
-            set { item.Price = value / (1 - discount); }
-        }
-
         public override string ToString()
         {
-            return $"{item} (Discounted {discount * 100}%): {Price:C}";
+            return $"{item} | (Discounted {discount * 100}%): {Price:c}";
         }
     }
 }

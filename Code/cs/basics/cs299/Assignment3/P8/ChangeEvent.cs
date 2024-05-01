@@ -8,12 +8,13 @@ namespace Assignment3
         ItemRemoved
     }
 
+    /// <summary>
+    /// 8b. Make an event ChangeEvent reflecting a change in an invoice.
+    /// </summary>
     public class ChangeEvent
     {
         public ChangeType changeType { get; }
         public LineItem item { get; }
-
-        public string description = "description";
 
         public ChangeEvent(ChangeType changeType, LineItem item)
         {

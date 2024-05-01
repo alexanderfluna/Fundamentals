@@ -33,16 +33,33 @@ namespace Assignment3
 
         public override string ToString()
         {
-            string output = "\tBundle:\n";
-            foreach (var item in items)
-                output += $"\t{item}\n";
-            output += $"\t\tBundle Total: ${Price}";
-            return output;
+            string output = "\tBundle:";
+            foreach (LineItem item in items)
+                output += $"\n\t{item}";
+            return output + "\n\t";
         }
 
-        public IEnumerable<LineItem> GetLineItems()
+        // This function returns all products in the bundle including discounted items
+        public IEnumerable<LineItem> GetProducts()
         {
-            return items;
+            foreach (LineItem item in items)
+            {
+                if (item is Product)
+                {
+                    yield return (Product)item;
+                }
+                if (item is DiscountedItem)
+                {
+                    yield return (DiscountedItem)item;
+                }
+                else if (item is Bundle)
+                {
+                    foreach (LineItem bundleItem in ((Bundle)item).GetProducts())
+                    {
+                        yield return bundleItem;
+                    }
+                }
+            }
         }
     }
 }

@@ -27,29 +27,34 @@ namespace Assignment3
             observers = new List<Observer>();
         }
 
-        public void AddItem(LineItem item)
-        {
-            items.Add(item);
-            NotifyObservers(new ChangeEvent(ChangeType.ItemAdded, item));
-        }
-
-        public void RemoveItem(LineItem item)
-        {
-            items.Remove(item);
-            NotifyObservers(new ChangeEvent(ChangeType.ItemRemoved, item));
-        }
-
+        // 8a. An invoice will be the subject to be observed. 
+        // To do this you need to add to class Invoice a method to attach observers.
         public void AttachObserver(Observer observer)
         {
             observers.Add(observer);
         }
 
+        // 8a. Whenever a change occurs, the invoice will notify all observers.
         private void NotifyObservers(ChangeEvent changeEvent)
         {
             foreach (Observer observer in observers)
             {
                 observer.StateChanged(changeEvent);
             }
+        }
+
+        public void AddItem(LineItem item)
+        {
+            items.Add(item);
+            // 8b. Make an event ChangeEvent reflecting a change in an invoice.
+            NotifyObservers(new ChangeEvent(ChangeType.ItemAdded, item));
+        }
+
+        public void RemoveItem(LineItem item)
+        {
+            items.Remove(item);
+            // 8b. Make an event ChangeEvent reflecting a change in an invoice.
+            NotifyObservers(new ChangeEvent(ChangeType.ItemRemoved, item));
         }
 
         public override string ToString()
@@ -61,9 +66,27 @@ namespace Assignment3
             return output;
         }
 
-        public IEnumerable<LineItem> GetLineItems()
+        // This function returns all products in the invoice including discounted items
+        public IEnumerable<LineItem> GetProducts()
         {
-            return items;
+            foreach (LineItem item in items)
+            {
+                if (item is Product)
+                {
+                    yield return (Product)item;
+                }
+                if (item is DiscountedItem)
+                {
+                    yield return (DiscountedItem)item;
+                }
+                else if (item is Bundle)
+                {
+                    foreach (LineItem bundleItem in ((Bundle)item).GetProducts())
+                    {
+                        yield return bundleItem;
+                    }
+                }
+            }
         }
     }
 }
