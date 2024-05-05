@@ -53,6 +53,8 @@ public:
                     topSubIndex = max;
             }
 
+
+            // CHANGE THIS SO THAT IT WORKS WITH ALL STATIC ANCESTORS
             if (runtimeStack[topSubIndex] == (int)&parent->name) // If the top sub is the parent of the called sub (Case 1: Caller has a lower static depth)
             {
                 display.push_back(runtimeStack.size()); // Add a block in the display that will point to the index of the called sub
