@@ -1,0 +1,23 @@
+Output of the program BasicCollectionDemo.cs 
+with basic operations on a Collection of characters.
+
+
+Initial List
+  a  b  c
+
+lst[0] = 'z'; lst[1]++;
+  z  c  c
+
+lst.Insert(0,'n');
+  n  z  c  c
+
+lst.Insert(lst.Count,'x');
+  n  z  c  c  x
+
+lst.RemoveAt(0);
+  z  c  c  x
+
+lst.Remove('c');
+  z  c  x
+
+lst.Clear(); 

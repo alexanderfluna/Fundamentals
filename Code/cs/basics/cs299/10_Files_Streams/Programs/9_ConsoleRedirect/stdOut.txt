@@ -1,0 +1,2 @@
+Text to std output - by Console.Out.WriteLine
+Text to standard output -  by Console.WriteLine(...)

@@ -1,0 +1,12 @@
+BinarySearchDemoOutput - Output from the BinarySearch program
+
+The initial point list
+Point:(0,0). Point:(5,9). Point:(5,4). Point:(7.1,-13). 
+Point:(5,-2). Point:(14,-3.4). 
+
+The sorted point list
+Point:(7.1,-13). Point:(0,0). Point:(5,-2). Point:(5,4). 
+Point:(14,-3.4). Point:(5,9). 
+
+BinarySearch for Point:(5,4). : 3
+BinarySearch for Point:(1,8). : 3

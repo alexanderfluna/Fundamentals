@@ -1,0 +1,72 @@
+AnimalFarmTesterOutput - Output from sample client of AnimalFarm. 
+
+
+Adding elephant, giraffe, and tiger with Add(...)
+Animal: elephant(Female)
+Animal: elephant(Male)
+Animal: giraffe(Female)
+Animal: giraffe(Male)
+Animal: tiger(Female)
+Animal: tiger(Male)
+
+
+Inserting blue jay and golden eagle at index 0 with Insert(0, ...)
+Animal: goldenEagle(Female)
+Animal: goldenEagle(Male)
+Animal: blueJay(Female)
+Animal: blueJay(Male)
+Animal: elephant(Female)
+Animal: elephant(Male)
+Animal: giraffe(Female)
+Animal: giraffe(Male)
+Animal: tiger(Female)
+Animal: tiger(Male)
+
+
+The birds in farm - extraced with GetGroup
+Animal: goldenEagle(Female)
+Animal: goldenEagle(Male)
+Animal: blueJay(Female)
+Animal: blueJay(Male)
+
+
+[Removal denied]
+Removing tiger with Remove(...)
+Animal: goldenEagle(Female)
+Animal: goldenEagle(Male)
+Animal: blueJay(Female)
+Animal: blueJay(Male)
+Animal: elephant(Female)
+Animal: elephant(Male)
+Animal: giraffe(Female)
+Animal: giraffe(Male)
+Animal: tiger(Female)
+Animal: tiger(Male)
+
+
+[Removal denied]
+Removing animal at index 2, with RemoveAt(2)
+Animal: goldenEagle(Female)
+Animal: goldenEagle(Male)
+Animal: blueJay(Female)
+Animal: blueJay(Male)
+Animal: elephant(Female)
+Animal: elephant(Male)
+Animal: giraffe(Female)
+Animal: giraffe(Male)
+Animal: tiger(Female)
+Animal: tiger(Male)
+
+
+[Clearning denied]
+Clear the farm with Clear()
+Animal: goldenEagle(Female)
+Animal: goldenEagle(Male)
+Animal: blueJay(Female)
+Animal: blueJay(Male)
+Animal: elephant(Female)
+Animal: elephant(Male)
+Animal: giraffe(Female)
+Animal: giraffe(Male)
+Animal: tiger(Female)
+Animal: tiger(Male)

@@ -1,0 +1,48 @@
+AnimalFarmTesterOutput - Output from sample client of AnimalFarm. 
+
+
+**InsertItem: 0, Animal: elephant
+**InsertItem: 1, Animal: giraffe
+**InsertItem: 2, Animal: tiger
+Adding elephant, giraffe, and tiger with Add(...)
+Animal: elephant
+Animal: giraffe
+Animal: tiger
+
+
+**InsertItem: 0, Animal: dog
+**InsertItem: 0, Animal: cat
+Inserting dog and cat at index 0 with Insert(0, ...)
+Animal: cat
+Animal: dog
+Animal: elephant
+Animal: giraffe
+Animal: tiger
+
+
+**SetItem: 1, Animal: herring
+After af[1] = herring
+Animal: cat
+Animal: herring
+Animal: elephant
+Animal: giraffe
+Animal: tiger
+
+
+**RemoveItem: 4
+Removing tiger with Remove(...)
+Animal: cat
+Animal: herring
+Animal: elephant
+Animal: giraffe
+
+
+**RemoveItem: 2
+Removing animal at index 2, with RemoveAt(2)
+Animal: cat
+Animal: herring
+Animal: giraffe
+
+
+**ClearItems
+Clear the farm with Clear()

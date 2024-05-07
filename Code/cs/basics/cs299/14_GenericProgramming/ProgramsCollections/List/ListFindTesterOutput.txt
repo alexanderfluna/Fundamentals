@@ -1,0 +1,14 @@
+ListFindTesterOutput - Output from the Find program
+
+Initial point list
+Point:(0,0). Point:(5,9). Point:(5,4). Point:(7.1,-13). 
+Point:(5,-2). Point:(14,-3.4). 
+
+Found with delegate predicate: Point:(5,9). 
+
+Found with static member predicate: Point:(5,9). 
+
+All points with x coordinate 5
+Point:(5,9). Point:(5,4). Point:(5,-2). 
+
+Index of Point:(5,4).  2

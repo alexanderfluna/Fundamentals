@@ -1,0 +1,31 @@
+BasicListDemoOutput - Output of the 
+program with basic operations on a List of characters
+
+Initial List
+  a  b  c
+
+lst[0] = 'z'; lst[1]++;
+  z  c  c
+
+lst.Insert(0,'n');
+  n  z  c  c
+
+lst.Insert(lst.Count,'x');
+  n  z  c  c  x
+
+lst.InsertRange(2, new List<char>(new char[]{'1', '2', '3', '4'}));
+  n  z  1  2  3  4  c  c  x
+
+lst.RemoveAt(0);
+  z  1  2  3  4  c  c  x
+
+lst.Remove('c');
+  z  1  2  3  4  c  x
+
+lst.RemoveRange(1, 2);
+  z  3  4  c  x
+
+lst.RemoveAll(delegate(char ch){return Char.IsDigit(ch);});
+  z  c  x
+
+All characters in lst are letters

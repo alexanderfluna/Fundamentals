@@ -1,0 +1,17 @@
+BinarySearchNotFoundOutput - Output from the BinarySearch program - 
+non-existing Point. 
+
+Initial point list
+Point:(0,0). Point:(5,9). Point:(5,4). Point:(7.1,-13). 
+Point:(5,-2). Point:(14,-3.4). 
+
+Sorted point list
+Point:(7.1,-13). Point:(0,0). Point:(5,-2). Point:(5,4). 
+Point:(14,-3.4). Point:(5,9). 
+
+BinarySearch for Point:(1,1). : -3
+
+Inserting Point:(1,1).  at index 2
+Point list after insertion
+Point:(7.1,-13). Point:(0,0). Point:(1,1). Point:(5,-2). 
+Point:(5,4). Point:(14,-3.4). Point:(5,9). 
