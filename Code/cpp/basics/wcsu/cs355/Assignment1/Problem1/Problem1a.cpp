@@ -1,5 +1,6 @@
 // Alexander Luna | Assignment 1 | Problem1a.cpp (C++)
 #include <iostream>
+#include <ctime>
 using namespace std;
 
 // Arrays will be of size 100 x 100
