@@ -1,0 +1,368 @@
+; atoms
+
+3.1416
+100
+x
+hyphenated-name
+?some-predicate
+nil ;nil is also an empty list
+
+;
+(1 2 3 4)
+(tom mary john joice)
+()
+(on block-1 table)
+(likes bill ?X)
+((2478 (lovelace ada) programmer) (3592 (babbage charles) computer-designer)
+((key1 value1) (key-2 value2) (key-3 value3))
+
+; arithmetic expressions
+(* 7 9)
+(-(+ 3 4) 7)
+(* 7 9)
+>63
+
+(-(+ 3 4 )7)
+>0
+(*(+ 2 5) (- 7 (/ 21 7)))
+>28
+(>(* 5 6) (+ 4 5))
+>t
+5
+>5
+
+; defun examples
+(defun square (x)
+	(* x x)
+)
+
+(defun hypotenuse (x y) ; the length of the hypotenuse is
+   (sqrt (+ (square x)       ; the square root of the sum of
+                (square y))))    ; the squares of the other sides
+(hypotenuse 3 4)
+
+;Conditionals
+(defun abs (x)
+      (cond ((< x 0 ) (* x -1)) ; if x is negative ...
+            ((>= x 0) x)
+      )
+)      ; if ... return x
+(abs 5)
+
+
+(defun abs (x)
+    (cond ((< x 0) (* -1 x))
+          ( t       x)) )       ; otherwise return x
+          
+(defun abs (x)
+    (cond ((< x 0) (* -1 x))
+          ( (1)       x)) )
+
+(member 3 '(1 2 3 4 5))
+>(3 4 5)
+
+(member 8 '(1 2 3 4 5))
+(member nil '(1 2 3 4 5))
+(member nil '(1 2 nil 3 4 5))
+(member nil '(1 2 () 3 4 5))
+(member nil '(1 2 3 4 5 ()))
+(member nil '(1 2 3 4 5))
+
+; shortcut evaluation
+(and (oddp 3) (print "second evaluated"))
+>"second evaluated" 
+>"second evaluated"
+
+(and (oddp 4) (print "second evaluated"))
+
+(member (print "hello") '(1 3 "hello" 4 5 6)) 
+(member (print 3) '(1 3 "hello" 4 5 6)) 
+
+(member (print "hello") '(1 3 "hello" 4 5 6)) 
+
+(or (oddp 3) (print "second evaluated"))
+>t
+
+;a database application: manipulation of employee records 
+; represented as lists with name, salary, and emp#; 
+; function nth returns n-th element of a list:
+(nth 0 '(a b c d)) ; note numbering begins with 0
+(nth 2 '(a b c d))
+>c
+
+(defun name-field (record)
+     (nth 0 record))
+>(name-field '((Ada Lovelace) 45000.00 385))
+(Ada Lovelace)
+
+ ; - salary-field, number-field - similarly
+(defun salary-field (record)
+     (nth 1 record))
+(defun number-field (record)
+     (nth 2 record))
+(defun first-name (name)
+    (nth 0 name))
+> (first-name(name-field '((Ada Lovelace) 45000.00 385)))
+Ada
+
+; -built-in function list can be used to create new records; takes any number of elements, evaluates, and returns a list containing those values as arguments:
+(list 1 2 3 4)
+(1 2 3 4)
+(name-field (list 1 2 3))
+>(list '(Ada Lovelace) 45000.00 358)
+((Ada Lovelace) 45000.00 358))
+  
+(defun build-record (name salary emp-number)
+    (list name salary emp-number))
+(build-record '(Alan Turing) 50000.00 135)
+((AlanTuring) 50000.00 135)
+
+; List structures are immutable:
+(defun replace-salary (record new-salary)
+     (build-record (name-field record)
+                             new-salary
+                           (number-field record)))
+> (replace-salary '((Ada Lovelace) 45000 385) 50000)
+((Ada Lovelace) 50000 385) 
+
+; Function quote
+; form - an s-expresion that may be evaluated 
+; function quote: to prevent evaluation of an s-expression 
+; that should be treated as data rather than a form
+>(nth 0 (a b c d)) ; error - a is not a function name
+('(a b c))
+
+(quote (a b c))
+>(a b c)
+(quote (+ 1 3))
+>(+ 1 3)
+
+; abbreviation: '
+(list (+ 1 2) (+ 3 4))
+>(3 7)
+(eval (list '+ '(+ 1 2) '(+ 3 4)))
+>((+ 1 2)  (+ 3 4))
+
+; Function eval
+; eval is a complement to quote:evaluate this expression, 
+; whatever it is
+(quote (+ 2 3))
+>(+ 2 3)
+(eval (quote (+ 2 3))); eval undoes the effect of quote
+>5
+
+(list '* 2 5)    ; constructs an evaluable s-expression
+>(* 2 5)
+(eval (list '* 2 5))  ; constructs and evaluates it
+>10
+
+(build-record (list 'Alan 'Turing) 50000.00 135)
+
+(car '(a b c))   ; the list is quoted
+>a
+(cdr '(a b c))
+>(b c)
+
+((quote (print "hello")) (+ 2 3))
+
+; Examples
+
+; member
+(defun member (element list)
+   (cond ((null list) nil)         ;element not in list
+         ((equal element (car list)) list)  ; found
+         (t (member element (cdr list))))); recursion
+      
+(member 4 '(1 2 3 4 5 6 7))
+>(4 5 6 7)
+(member 5 '(a d b))
+>nil
+
+(member 1 '(1 2 3 4 5 6 7))
+(member '(1) '((1) 2 3 ))
+(member 1 '((1) 2 3 ))
+
+; length
+(defun length (list)
+    (cond ((null list) 0)
+          (t          (+ (length (cdr list)) 1))
+    ))
+
+; nth
+(defun nth (n list)
+    (cond ((zerop n) (car list))    ; zerop tests for zero 
+          (t (nth (- n 1) (cdr list)))
+    ))
+
+; member, length and nth are built in Common Lisp
+
+; function cons: constructs a list from its car and cdr
+(cons 1 '(2 3 4))
+>(1 2 3 4)
+(cons '(a b) '(c d e))
+>((a b) c d e)
+(car (cons 1 '(2 3 4)))
+>1
+
+Examples ...
+ (defun filter-negatives (number-list)
+     (cond ((null number-list) nil)   ;termination condition
+           ((plusp (car number-list)) (cons (car number-list)
+ 		             (filter-negatives (cdr number-list))))
+           (t (filter-negatives (cdr number-list)))))
+(filter-negatives '(1 -2 3 -4 5 0 6))
+>(1 3 5 6)
+
+(defun append (list1 list2)
+    (cond ((null list1) list2)
+          (t (cons (car list1) (append (cdr list1) list2)))
+    ))
+(append '(1 2 3) '(4 5 6))
+> (1 2 3 4 5 6)
+
+(append '((1) 2 3) '(4 5 6))
+(append '((1) 2 3) '(4 (5 6)))
+
+; these examples used "cdr-recursion"
+; lists can represent tree structures:
+((1 2) 3 4)
+(length '('(1 2) 3 4))
+> 3
+> 
+(defun count-atoms (list)
+  (cond ( (null list) 0)
+        ( (atom list) 1)
+        ( t (+ (count-atoms  (car list)) ;open up an element
+               (count-atoms (cdr list)))))) ;scan down the list
+(count-atoms '(a b c d))  
+
+(count-atoms '((a b) (c d )))
+(count-atoms '((a b) c))
+(count-atoms '(1 2 3 '())) ; the quote is an atom, but nil is not         
+(count-atoms '(1 2 3 nil)) ;     
+(count-atoms '(c))
+
+(defun nth (n list)
+    
+    (cond ((zerop n) (car list)); zerop tests for zero 
+          
+    (t (nth (- n 1) (cdr list)))))
+
+(nth 3 '(1 2 3 4))
+
+(nth 2 '(1 2 (3) 4))
+
+
+
+
+Examples...
+(defun flatten (lst)
+      (cond ((null lst) nil)
+            ((atom lst) (list lst))
+            (t (append (flatten (car lst)) (flatten (cdr lst))))))
+(flatten '(a (b c) (((d) e f))))
+>(a b c d e f)
+
+; redefinition of function member
+(defun member (element list)
+   (cond ((null list) nil)         ;element not in list
+         ((equal element (car list)) list)  ; found
+         (t (member element (cdr list))))); recursion
+         
+ (member 4 '(1 3 4 7))        
+         
+
+; Farmer, wolf, goat and cabbage problem
+; state is defined with a quadruple (f,w,g,c) in which 
+; each of f,w,g and c can be either "w" for "west" or "e" for "east"
+(defun make-state (f w g c)   (list f w g c))
+(defun farmer-side (state)    (nth 0 state))
+(defun wolf-side (state)      (nth 1 state))
+(defun goat-side (state)      (nth 2 state))
+(defun cabbage-side (state)   (nth 3 state))
+(defun farmer-takes-self (state)
+    (make-state (opposite (farmer-side state))
+                        (wolf-side state)
+                        (goat-side state)
+                        (cabbage-side state)))
+
+(defun opposite (side)
+      (cond ((equal side 'e) 'w)
+            ((equal side 'w) 'e)))
+; need function safe to return the same state if it is safe, and 
+; nil, if state is not safe:
+
+(defun safe (state)
+      (cond ( (and (or
+                     (equal (wolf-side state) (goat-side state))
+                     (equal (goat-side state) (cabbage-side state))
+                  ) 
+                  (not ( equal (farmer-side state) (goat-side state))
+                  ) 
+               ) nil
+            )
+            (t state)
+      ))
+
+(safe '(e w w e))       ;wolf eats goat
+(safe '(w w e e))       ;goat eats cabbage
+(safe '(w w w w))     ;this is safe
+
+
+(defun farmer-takes-self (state)      ;revised
+    (safe (make-state (opposite (farmer-side state))
+                      (wolf-side state)
+                      (goat-side state)
+                      (cabbage-side state)
+          )
+    )
+  )
+(defun farmer-takes-wolf (state)
+     (cond ( (equal (farmer-side state) (wolf-side state))
+             (safe (make-state (opposite (farmer-side state))
+                               (opposite (wolf-side state))
+                               (goat-side state)
+                               (cabbage-side state)
+                   )
+             )
+            )
+            (t nil)
+     )
+  )
+
+
+(defun farmer-takes-goat (state)
+   (cond ((equal (farmer-side state) (goat-side state))
+                      (safe (make-state  
+                                (opposite (farmer-side state))
+                                (wolf-side state)
+                                (opposite (goat-side state))
+                                (cabbage-side state))))
+          (t nil)))
+(defun farmer-takes-cabbage (state)
+   (cond ((equal (farmer-side state) (cabbage-side state))
+                         (safe (make-state  
+                              (opposite (farmer-side state))
+                              (wolf-side state)
+                              (goat-side state)
+                              (opposite (cabbage-side state)))))
+          (t nil)))
+
+; To avoid looping will maintain a been-list:
+(defun path (state goal been-list)
+  (cond ((null state) nil)
+      ((equal state goal); then return the sequence of states 
+                                  (reverse (cons state been-list))) ; 
+      ((not (member state been-list))
+             (or (path (farmer-takes-self state) goal
+                               (cons state been-list))
+                   (path (farmer-takes-wolf state) goal
+                               (cons state been-list))
+                   (path (farmer-takes-goat state) goal
+                               (cons state been-list))
+                   (path (farmer-takes-cabbage state) goal
+                               (cons state been-list)) ))))
+(defun solve-fwgc (state goal)
+     (path state goal nil))
+
+(solve-fwgc '(e e e e) '(w w w w))

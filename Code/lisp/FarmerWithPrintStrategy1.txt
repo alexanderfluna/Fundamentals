@@ -1,0 +1,103 @@
+;STRATEGY 1: FARMER SELF IS FIRST, THEN FARMER AND WOLF  -- 
+; 15 STATES GENERATED, 8 USED IN SOLUTION
+; redefinition of function member
+(defun member (element list)
+   (cond ((null list) nil)         ;element not in list
+         ((equal element (car list)) list)  ; found
+         (t (member element (cdr list))))); recursion
+
+; Farmer, wolf, goat and cabbage problem
+; state is defined with a quadruple (f,w,g,c) in which 
+; each of f,w,g and c can be either "w" for "west" or "e" for "east"
+(defun make-state (f w g c)   (list f w g c))
+(defun farmer-side (state)    (nth 0 state))
+(defun wolf-side (state)      (nth 1 state))
+(defun goat-side (state)      (nth 2 state))
+(defun cabbage-side (state)   (nth 3 state))
+(defun farmer-takes-self (state)
+    (make-state (opposite (farmer-side state))
+                        (wolf-side state)
+                        (goat-side state)
+                        (cabbage-side state)))
+
+(defun opposite (side)
+      (cond ((equal side 'e) 'w)
+            ((equal side 'w) 'e)))
+; need function safe to return the same state if it is safe, and 
+; nil, if state is not safe:
+
+(defun safe (state)
+      (cond ( (and (or
+                     (equal (wolf-side state) (goat-side state))
+                     (equal (goat-side state) (cabbage-side state))
+                  ) 
+                  (not ( equal (farmer-side state) (goat-side state))
+                  ) 
+               ) (unless () (print (list state 'Rejected_Unsafe)) ())
+            )
+            (t (print state))
+      ))      
+
+(safe '(e w w e))       ;wolf eats goat
+(safe '(w w e e))       ;goat eats cabbage
+(safe '(w w w w))     ;this is safe
+
+
+(defun farmer-takes-self (state)      ;revised
+    (safe (make-state (opposite (farmer-side state))
+                      (wolf-side state)
+                      (goat-side state)
+                      (cabbage-side state)
+          )
+    )
+  )
+(defun farmer-takes-wolf (state)
+     (cond ( (equal (farmer-side state) (wolf-side state))
+             (safe (make-state (opposite (farmer-side state))
+                               (opposite (wolf-side state))
+                               (goat-side state)
+                               (cabbage-side state)
+                   )
+             )
+            )
+            (t nil)
+     )
+  )
+
+
+(defun farmer-takes-goat (state)
+   (cond ((equal (farmer-side state) (goat-side state))
+                      (safe (make-state  
+                                (opposite (farmer-side state))
+                                (wolf-side state)
+                                (opposite (goat-side state))
+                                (cabbage-side state))))
+          (t nil)))
+(defun farmer-takes-cabbage (state)
+   (cond ((equal (farmer-side state) (cabbage-side state))
+                         (safe (make-state  
+                              (opposite (farmer-side state))
+                              (wolf-side state)
+                              (goat-side state)
+                              (opposite (cabbage-side state)))))
+          (t nil)))
+
+; To avoid looping will maintain a been-list:
+(defun path (state goal been-list)
+  (cond ((null state) nil)
+      ((equal state goal); then return the sequence of states 
+                                  (reverse (cons state been-list))) ;
+      ( (not (member state been-list))
+                   (or (path (farmer-takes-self state) goal         
+                               (cons state been-list)) 
+                   (path (farmer-takes-wolf state) goal
+                               (cons state been-list))
+                   (path (farmer-takes-goat state) goal
+                               (cons state been-list))
+                   (path (farmer-takes-cabbage state) goal
+                               (cons state been-list)) ))))
+(defun solve-fwgc (state goal)
+     (path state goal nil))
+
+(solve-fwgc '(e e e e) '(w w w w))
+(solve-fwgc '(w e w e) '(w w w w))

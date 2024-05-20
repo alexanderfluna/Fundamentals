@@ -1,0 +1,52 @@
+Find the last element of a list
+(defun lastElm (arg)
+    (cond ((null arg) nil)
+          ((null (cdr arg)) (car arg))
+          (t (lastElm (cdr arg)))
+    )
+ ) 
+ 
+ 
+ Return a list containing the last element of a list
+ (defun lastElm (arg)
+     (cond ((null arg) nil)
+           ((null (cdr arg)) arg)
+           (t (lastElm (cdr arg)))
+     )
+  )
+  
+  Return a list containing the last 2 elements of a list
+   (defun last2 (arg)
+       (cond ((null arg) nil)
+             ((null (cdr arg)) nil)
+             ((null (cdr (cdr arg))) arg)
+             (t (last2 (cdr arg)))
+       )
+  )
+  
+  (last2 '(1 2 3 4 5))
+  (last2 nil)
+  (last2 '(1))
+  (last2 '(1 2))
+  (last2 '(1 2 3))
+ 
+ Define a function to reverse a list
+ (1 2 3)  (3 2 1)
+ Will use a temporary list, initially empty, and add car(lst) in front of it
+ and call recursively with cdr(lst) and the new temporary list
+ 
+ (defun help_r (lst temp)
+     (cond ((null lst) temp)
+           ((null (cdr lst)) (cons (car lst) temp))
+           (t (help_r (cdr lst) (cons (car lst) temp)))
+     )
+  )
+  
+  (help_r nil nil)
+  (help_r '(1) nil)
+ 
+ (defun reverse_ (lst)
+     (help_r lst nil)
+ )
+     
+ (reverse_ '(1 2 3))

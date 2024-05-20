@@ -1,0 +1,67 @@
+Eliminate consecutive duplicates from a list
+If the car of the list is the same as the car of the cdr
+of the list, eliminate the car of the list and return 
+the result of a recursive call with the cdr of the list
+If they are not the same, use function cons to construct a 
+list from the car of the argument and the result of the 
+recursive call with the cdr of the list.
+
+Base cases?
+
+(defun remove_dupl(lst)
+   (cond 
+      ((null lst) nil); base case
+      ((null (cdr lst)) lst); base case
+      ((= (car lst) (car (cdr lst)))
+            (remove_dupl (cdr lst))); eliminate car of lst
+      (t (cons (car lst)(remove_dupl(cdr lst))))
+   )
+ )
+ 
+ (remove_dupl '(2 3 3 4 5 5))
+ 
+ (defun dupl_elm(lst)
+    (cond ((null lst) nil)
+          (t (append (list (car lst) (car lst))
+                     (dupl_elm (cdr lst))))
+    )
+ )
+ 
+ (dupl_elm '( 1 2 3 4))
+ 
+ remove at pos 
+    if list is empty return list
+    else if pos = 0 return cdr list
+    else return a list constructed from car list and
+          the result of a recusrive call on cdr list 
+ (defun remove_at(lst pos)
+    (cond ((null lst) nil)
+          ((= pos 0) (cdr lst))
+          (t cons (car lst) (remove_at (cdr lst) (- pos 1)))
+     )
+ )
+ (defun remove_at(lst pos)
+     (cond ((null lst) nil)
+           ((= pos 0) (cdr lst))
+           (t (cons (car lst) (remove_at (cdr lst) (- pos 1))))
+      )
+ )
+ (remove_at '(1 2 3) 1)
+ 
+ insert elm at pos of list
+    if pos is 0 or list is empty
+       construct a list from elm and list 
+       else cons from car and recursive call on cdr and pos-1
+ 
+ (defun insert_at(pos elm lst)
+     (cond ((or (= pos 0) (null lst))(cons elm lst))
+           (t (cons (car lst) 
+                    (insert_at (- pos 1) elm (cdr lst))
+               )
+            )
+     )
+ )
+ (insert_at 1  5 '(1 2 3))
+ 
+                    
+                    

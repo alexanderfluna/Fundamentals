@@ -1,0 +1,40 @@
+(defun filter-negatives (number-list)
+     (cond ( (null number-list) nil)   ;termination condition
+           ( (minusp (car number-list));if car is negative
+               (filter-negatives(cdr number-list)) )
+           (t (cons (car number-list)
+ 		    (filter-negatives (cdr number-list)) 
+ 	       )
+ 	   ); end pair
+      )
+)
+
+(filter-negatives '(1 -2 3 -4 5 0 6)); 0 remains in the list
+
+; function member modified to look inside nested lists
+(defun member (element list)
+   (cond ( (null list) nil )  
+         ( (cond ( (atom (car list)) 
+                    (cond ( (equal element(car list)) list ) ;pair
+                            ( t (member element (cdr list)) ); pair
+                     ); cond
+                  ); pair
+                  ; car is not atom
+                 (t (cond ( (member element (car list))
+                            (cons (member element(car list))(cdr list))
+                          ); pair
+                          (t (member element (cdr list)) );pair
+                     ); cond
+                  ); t pair
+            ); cond;
+          ); pair
+    );cond
+ );defun
+                                
+         
+(member 1 '(1 2 3 4 5 6 7))
+(member '(1) '((1) 2 3 ))  ;nil  
+(member 1 '((1) 2 3 ))
+(member 1 '(5 6 (7(1)2) 2 3 ))
+         
+         

@@ -1,0 +1,30 @@
+;Check whether an atom occurs in a list that may have nested lists
+(defun member (elem list)
+        ; the element should be an atom
+  (cond ( (not (atom elem)) nil)
+        ; if the list is empty, the atom is not in the list
+        ( (null list) nil)
+        ; if the second argument is an atom, not a list,
+        ; it is either equal to the element we search for
+        ; or not
+        ( (atom list) (cond ((= list elem) elem) 
+                             (t nil)))
+        ; second argument is a non-empty list
+        ; if the element is in the car of the list
+        ( (member elem (car list)) 
+                       ; place the returned part of the car
+                       ; of the list as a car of the result
+                       ; before the cdr of the list
+                       (cons (member elem (car list)) (cdr list)))
+         ; if the element is nt in the car of the list
+         ; check the cdr of the list
+        (t (member elem (cdr list)))
+   )
+)
+
+(member 1 '(1 2 3 4 5 6 7))
+(member '(1) '((1) 2 3 ))  ;nil  
+(member 1 '((1) 2 3 ))
+(member 1 '(5 6 (7(1)2) 2 3 ))
+(member 1 '(5 6 (7 () 2) (5 (6 (1) 2 3 ))))
+
