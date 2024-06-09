@@ -16,17 +16,16 @@ public:
         vector<int> ans;
         if (root == NULL) return ans;
         
-        stack<TreeNode*> s;
-        s.push(root);
+        stack<TreeNode*> stack;
+        stack.push(root);
         
-        while (s.size())
+        while (stack.size())
         {
-            TreeNode* node = s.top();
-            s.pop();
+            TreeNode* node = stack.top();
+            stack.pop();
             ans.push_back(node->val);
-            
-            if (node->right != NULL) s.push(node->right);
-            if (node->left != NULL) s.push(node->left);
+            if (node->right != NULL) stack.push(node->right);
+            if (node->left != NULL) stack.push(node->left);
         }
         
         return ans;
