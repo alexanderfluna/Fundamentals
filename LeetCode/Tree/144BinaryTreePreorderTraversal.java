@@ -1,6 +1,3 @@
-public class 144BinaryTreePreorderTraversal {
-    
-}
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -17,25 +14,39 @@ public class 144BinaryTreePreorderTraversal {
  * }
  */
 class Solution {
+    // Iterative
     public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> result = new ArrayList<>();
-        Deque<TreeNode> stack = new ArrayDeque<>();
-        TreeNode node = root;
-        while (node != null || !stack.isEmpty())
+        List<Integer> ans = new ArrayList<>();
+        if (root == null) return ans;
+        
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        
+        while (!stack.isEmpty())
         {
-            if (node != null)
-            {
-                stack.push(node);
-                result.add(node.val);
-                node = node.left;
-            }
-            else
-            {
-                TreeNode n = stack.pop();
-                node = n.right;
-            }
+            TreeNode curr = stack.pop();
+            ans.add(curr.val);
+            if (curr.right != null) stack.push(curr.right);
+            if (curr.left != null) stack.push(curr.left);
         }
         
-        return result;
+        return ans;
     }
+    
+    /*
+    // Recursive
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+        if (root == null) return ans;
+        helper(root, ans);
+        return ans;
+    }
+    
+    public void helper(TreeNode root, List<Integer> ans) {
+        if (root == null) return;
+        ans.add(root.val);
+        helper(root.left, ans);
+        helper(root.right, ans);
+    }
+    */
 }
