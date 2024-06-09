@@ -28,9 +28,7 @@ public:
 
             root = stack.top();
             stack.pop();
-
             ans.push_back(root->val);
-            
             root = root->right;
         }
         
