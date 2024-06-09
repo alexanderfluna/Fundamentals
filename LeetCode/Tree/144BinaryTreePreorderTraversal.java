@@ -16,7 +16,7 @@
 class Solution {
     // Iterative
     public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> ans = new ArrayList<>();
+        List<Integer> ans = new LinkedList<>();
         if (root == null) return ans;
         
         Stack<TreeNode> stack = new Stack<>();
@@ -36,7 +36,7 @@ class Solution {
     /*
     // Recursive
     public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> ans = new ArrayList<>();
+        List<Integer> ans = new LinkedList<>();
         if (root == null) return ans;
         helper(root, ans);
         return ans;
