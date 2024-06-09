@@ -20,18 +20,17 @@ class Solution {
         if (root == null) return ans;
         
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode curr = root;
         
-        while (curr != null || !stack.isEmpty())
+        while (root != null || !stack.isEmpty())
         {
-            while (curr != null)
+            while (root != null)
             {
-                stack.push(curr);
-                curr = curr.left;
+                stack.push(root);
+                root = root.left;
             }
-            curr = stack.pop();
-            ans.add(curr.val);
-            curr = curr.right;
+            root = stack.pop();
+            ans.add(root.val);
+            root = root.right;
         }
         
         return ans;
